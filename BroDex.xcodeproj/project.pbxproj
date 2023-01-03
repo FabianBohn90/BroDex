@@ -9,23 +9,39 @@
 /* Begin PBXBuildFile section */
 		8940F2372962DB9600AC4EEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F2362962DB9600AC4EEB /* AppDelegate.swift */; };
 		8940F2392962DB9600AC4EEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F2382962DB9600AC4EEB /* SceneDelegate.swift */; };
-		8940F23B2962DB9600AC4EEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F23A2962DB9600AC4EEB /* ViewController.swift */; };
+		8940F23B2962DB9600AC4EEB /* PokeDexController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F23A2962DB9600AC4EEB /* PokeDexController.swift */; };
 		8940F23E2962DB9600AC4EEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8940F23C2962DB9600AC4EEB /* Main.storyboard */; };
 		8940F2412962DB9600AC4EEB /* BroDex.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8940F23F2962DB9600AC4EEB /* BroDex.xcdatamodeld */; };
 		8940F2432962DB9800AC4EEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8940F2422962DB9800AC4EEB /* Assets.xcassets */; };
 		8940F2462962DB9800AC4EEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8940F2442962DB9800AC4EEB /* LaunchScreen.storyboard */; };
+		8940F24E2962F58200AC4EEB /* ItemDexController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F24D2962F58200AC4EEB /* ItemDexController.swift */; };
+		8940F2502962F5A800AC4EEB /* TypeDexController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F24F2962F5A800AC4EEB /* TypeDexController.swift */; };
+		8940F2522962F5C700AC4EEB /* DmgCalcController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F2512962F5C700AC4EEB /* DmgCalcController.swift */; };
+		8940F2572962F96100AC4EEB /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F2562962F96100AC4EEB /* List.swift */; };
+		8940F259296302DC00AC4EEB /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F258296302DC00AC4EEB /* FetchData.swift */; };
+		8940F25C2963081F00AC4EEB /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8940F25B2963081F00AC4EEB /* SDWebImage */; };
+		8940F25E29630C9D00AC4EEB /* PokeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F25D29630C9D00AC4EEB /* PokeTVCell.swift */; };
+		8940F261296312B900AC4EEB /* ItemTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F260296312B900AC4EEB /* ItemTVCell.swift */; };
+		8955A65029641CB700D1F5E6 /* PagingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8955A64F29641CB700D1F5E6 /* PagingKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8940F2332962DB9600AC4EEB /* BroDex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BroDex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8940F2362962DB9600AC4EEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8940F2382962DB9600AC4EEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8940F23A2962DB9600AC4EEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8940F23A2962DB9600AC4EEB /* PokeDexController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeDexController.swift; sourceTree = "<group>"; };
 		8940F23D2962DB9600AC4EEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8940F2402962DB9600AC4EEB /* BroDex.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BroDex.xcdatamodel; sourceTree = "<group>"; };
 		8940F2422962DB9800AC4EEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8940F2452962DB9800AC4EEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8940F2472962DB9800AC4EEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8940F24D2962F58200AC4EEB /* ItemDexController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDexController.swift; sourceTree = "<group>"; };
+		8940F24F2962F5A800AC4EEB /* TypeDexController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDexController.swift; sourceTree = "<group>"; };
+		8940F2512962F5C700AC4EEB /* DmgCalcController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DmgCalcController.swift; sourceTree = "<group>"; };
+		8940F2562962F96100AC4EEB /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		8940F258296302DC00AC4EEB /* FetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
+		8940F25D29630C9D00AC4EEB /* PokeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeTVCell.swift; sourceTree = "<group>"; };
+		8940F260296312B900AC4EEB /* ItemTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTVCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8940F25C2963081F00AC4EEB /* SDWebImage in Frameworks */,
+				8955A65029641CB700D1F5E6 /* PagingKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,14 +78,53 @@
 			children = (
 				8940F2362962DB9600AC4EEB /* AppDelegate.swift */,
 				8940F2382962DB9600AC4EEB /* SceneDelegate.swift */,
-				8940F23A2962DB9600AC4EEB /* ViewController.swift */,
-				8940F23C2962DB9600AC4EEB /* Main.storyboard */,
+				8940F2552962F64F00AC4EEB /* Models */,
+				8940F25F29630CA900AC4EEB /* Cells */,
+				8940F2532962F60500AC4EEB /* Controllers */,
+				8940F2542962F62200AC4EEB /* Views */,
+				8940F258296302DC00AC4EEB /* FetchData.swift */,
 				8940F2422962DB9800AC4EEB /* Assets.xcassets */,
-				8940F2442962DB9800AC4EEB /* LaunchScreen.storyboard */,
 				8940F2472962DB9800AC4EEB /* Info.plist */,
 				8940F23F2962DB9600AC4EEB /* BroDex.xcdatamodeld */,
 			);
 			path = BroDex;
+			sourceTree = "<group>";
+		};
+		8940F2532962F60500AC4EEB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8940F23A2962DB9600AC4EEB /* PokeDexController.swift */,
+				8940F24D2962F58200AC4EEB /* ItemDexController.swift */,
+				8940F24F2962F5A800AC4EEB /* TypeDexController.swift */,
+				8940F2512962F5C700AC4EEB /* DmgCalcController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8940F2542962F62200AC4EEB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8940F23C2962DB9600AC4EEB /* Main.storyboard */,
+				8940F2442962DB9800AC4EEB /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8940F2552962F64F00AC4EEB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8940F2562962F96100AC4EEB /* List.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8940F25F29630CA900AC4EEB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8940F25D29630C9D00AC4EEB /* PokeTVCell.swift */,
+				8940F260296312B900AC4EEB /* ItemTVCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +143,10 @@
 			dependencies = (
 			);
 			name = BroDex;
+			packageProductDependencies = (
+				8940F25B2963081F00AC4EEB /* SDWebImage */,
+				8955A64F29641CB700D1F5E6 /* PagingKit */,
+			);
 			productName = BroDex;
 			productReference = 8940F2332962DB9600AC4EEB /* BroDex.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +175,10 @@
 				Base,
 			);
 			mainGroup = 8940F22A2962DB9600AC4EEB;
+			packageReferences = (
+				8940F25A2963081F00AC4EEB /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				8955A64E29641CB700D1F5E6 /* XCRemoteSwiftPackageReference "PagingKit" */,
+			);
 			productRefGroup = 8940F2342962DB9600AC4EEB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -141,10 +206,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8940F23B2962DB9600AC4EEB /* ViewController.swift in Sources */,
+				8940F23B2962DB9600AC4EEB /* PokeDexController.swift in Sources */,
+				8940F2572962F96100AC4EEB /* List.swift in Sources */,
+				8940F24E2962F58200AC4EEB /* ItemDexController.swift in Sources */,
 				8940F2372962DB9600AC4EEB /* AppDelegate.swift in Sources */,
+				8940F261296312B900AC4EEB /* ItemTVCell.swift in Sources */,
+				8940F25E29630C9D00AC4EEB /* PokeTVCell.swift in Sources */,
 				8940F2392962DB9600AC4EEB /* SceneDelegate.swift in Sources */,
+				8940F2522962F5C700AC4EEB /* DmgCalcController.swift in Sources */,
 				8940F2412962DB9600AC4EEB /* BroDex.xcdatamodeld in Sources */,
+				8940F259296302DC00AC4EEB /* FetchData.swift in Sources */,
+				8940F2502962F5A800AC4EEB /* TypeDexController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +434,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8940F25A2963081F00AC4EEB /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		8955A64E29641CB700D1F5E6 /* XCRemoteSwiftPackageReference "PagingKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kazuhiro4949/PagingKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8940F25B2963081F00AC4EEB /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8940F25A2963081F00AC4EEB /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		8955A64F29641CB700D1F5E6 /* PagingKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8955A64E29641CB700D1F5E6 /* XCRemoteSwiftPackageReference "PagingKit" */;
+			productName = PagingKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8940F23F2962DB9600AC4EEB /* BroDex.xcdatamodeld */ = {
