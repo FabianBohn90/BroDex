@@ -9,7 +9,7 @@ import UIKit
 
 class ItemDexController: UIViewController {
     
-    let url = "https://pokeapi.co/api/v2/item?limit=80"
+    let url = "https://pokeapi.co/api/v2/item?limit=60"
     var data: Response?
 
     @IBOutlet weak var tableView: UITableView!

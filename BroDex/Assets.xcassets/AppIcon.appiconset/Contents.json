@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "BroDex_icon_beta.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

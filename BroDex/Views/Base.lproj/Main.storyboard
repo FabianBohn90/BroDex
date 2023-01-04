@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zXk-C6-Oxu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TeY-5j-sb8">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -146,6 +146,151 @@
             </objects>
             <point key="canvasLocation" x="-853" y="1301"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="KXt-dJ-AhC">
+            <objects>
+                <viewController id="TeY-5j-sb8" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FEK-Tb-U7b">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xf7-S5-jax">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="IkE-zz-12o">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="624"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="iTf-8H-GiK">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="240"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="240" id="87y-ml-O16"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Typen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sye-Dc-yLc">
+                                                <rect key="frame" x="0.0" y="244" width="393" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="KTd-eb-Piz"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="UT1-3i-Hgv">
+                                                <rect key="frame" x="0.0" y="272" width="393" height="60"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pflanze" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jE-vn-fgq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="60"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joT-Yl-mlm">
+                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="60"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="egA-C7-dtt"/>
+                                                </constraints>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iB-7q-uwk">
+                                                <rect key="frame" x="0.0" y="336" width="393" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="oxA-1L-4ah"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVq-Bc-8to">
+                                                <rect key="frame" x="0.0" y="364" width="393" height="140"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="140" id="9w4-Pq-z13"/>
+                                                </constraints>
+                                                <string key="text">Bisaflor ist ein Pokémon mit den Typen Pflanze und Gift und existiert seit der ersten Spielgeneration. Es stellt die zweite Entwicklungsstufe von Bisasam und Bisaknosp dar und ist somit neben Glurak und Turtok eine der Endentwicklungen der Starter-Pokémon aus Kanto. </string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FLO-Gh-uMU">
+                                                <rect key="frame" x="0.0" y="508" width="393" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Höhe 2.01 m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgq-hr-67G">
+                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gewicht 100 kg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blO-pS-El3">
+                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <viewLayoutGuide key="safeArea" id="7f1-C3-b1a"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="7ml-8Z-OBd"/>
+                                                </constraints>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fähigkeiten" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEk-vw-5eI">
+                                                <rect key="frame" x="0.0" y="552" width="393" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="qdT-Cl-dTi"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notdünger" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTq-WU-59B">
+                                                <rect key="frame" x="0.0" y="580" width="393" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="Ul5-y2-V4i"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chlorophyll" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbF-zN-J3g">
+                                                <rect key="frame" x="0.0" y="604" width="393" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="Rm8-Pm-lHS"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="IkE-zz-12o" firstAttribute="bottom" secondItem="v0h-ta-UQr" secondAttribute="bottom" id="3NV-el-9hX"/>
+                                    <constraint firstItem="IkE-zz-12o" firstAttribute="width" secondItem="EcV-8o-urH" secondAttribute="width" id="5Yt-Th-gYF"/>
+                                    <constraint firstItem="IkE-zz-12o" firstAttribute="leading" secondItem="v0h-ta-UQr" secondAttribute="leading" id="83q-1v-RVj"/>
+                                    <constraint firstItem="IkE-zz-12o" firstAttribute="trailing" secondItem="v0h-ta-UQr" secondAttribute="trailing" id="99k-Vu-ke6"/>
+                                    <constraint firstItem="IkE-zz-12o" firstAttribute="width" secondItem="v0h-ta-UQr" secondAttribute="width" id="Gfm-ld-1zh"/>
+                                    <constraint firstItem="IkE-zz-12o" firstAttribute="top" secondItem="v0h-ta-UQr" secondAttribute="top" id="xjZ-W8-4Md"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="v0h-ta-UQr"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="EcV-8o-urH"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="biM-Xs-dOe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Xf7-S5-jax" firstAttribute="trailing" secondItem="biM-Xs-dOe" secondAttribute="trailing" id="HSD-e7-4CC"/>
+                            <constraint firstItem="Xf7-S5-jax" firstAttribute="top" secondItem="biM-Xs-dOe" secondAttribute="top" id="hbI-CO-4yc"/>
+                            <constraint firstItem="Xf7-S5-jax" firstAttribute="bottom" secondItem="biM-Xs-dOe" secondAttribute="bottom" id="i5m-VZ-EC5"/>
+                            <constraint firstItem="Xf7-S5-jax" firstAttribute="leading" secondItem="biM-Xs-dOe" secondAttribute="leading" id="yii-JN-hzc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dRE-hc-FnJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-854.19847328244271" y="1955.6338028169016"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fgf-a0-cP5">
             <objects>
@@ -200,6 +345,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="3" width="475" height="475"/>
         <image name="Calc_Icon" width="32" height="32"/>
         <image name="Item_Icon" width="32" height="32"/>
         <image name="Pokedex_Icon" width="32" height="32"/>
