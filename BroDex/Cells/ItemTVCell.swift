@@ -11,11 +11,23 @@ class ItemTVCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Set the separator inset to be 10 points on the left and right side of the cell
-            separatorInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
-            // Set the layout margins to be 10 points on the left and right side of the cell
-            layoutMargins = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
-
+        
+            // Set the separator inset of the cell
+            separatorInset = UIEdgeInsets(
+                top: 20,
+                left: 10,
+                bottom: 20,
+                right: 10
+            )
+        
+            // Set the layout margins of the cell
+            layoutMargins = UIEdgeInsets(
+                top: 10,
+                left: 10,
+                bottom: 10,
+                right: 10
+            )
+        
     }
     
     @IBOutlet weak var itemIV: UIImageView!

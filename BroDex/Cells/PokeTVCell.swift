@@ -12,7 +12,16 @@ class PokeTVCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6))
+        // Set the layout margins of the cell
+        contentView.frame = contentView.frame.inset(
+            by: UIEdgeInsets(
+                top: 6,
+                left: 6,
+                bottom: 6,
+                right: 6
+            )
+        )
+        
     }
     
 

@@ -6,24 +6,30 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PokemonDetailVC: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    
+    var pokemonIndex: Int?
+    var Pokemon: Results?
+    
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBOutlet weak var pokeIV: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let urlData =
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemonIndex! + 1).png"
+        
+        pokeIV.sd_setImage(with: URL(string: urlData), placeholderImage: UIImage(named: "splash screen"))
+        
+        nameLabel.text = Pokemon?.name
     }
-    */
-
+    
+    @IBAction func backBarBtn(_ sender: Any) {
+        dismiss(animated: true)
+    }
 }

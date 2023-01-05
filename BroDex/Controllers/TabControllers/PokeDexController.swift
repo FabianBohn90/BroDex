@@ -10,6 +10,7 @@ import SDWebImage
 
 class PokeDexController: UIViewController {
     
+    
     let url = "https://pokeapi.co/api/v2/pokemon?limit=40"
     var data: Response?
     
@@ -43,26 +44,28 @@ class PokeDexController: UIViewController {
 
 extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     
+    
     //Die Methode createSpinnerFooter() erstellt eine Ansicht mit einem UIActivityIndicatorView, der sich dreht, um anzuzeigen, dass die App Daten lädt.
     private func createSpinenrFooter() -> UIView {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size .width, height: 94))
-        
         let spinner = UIActivityIndicatorView()
+        
         spinner.center = footerView.center
         footerView.addSubview(spinner)
         spinner.startAnimating()
+        
         return footerView
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            let position = scrollView.contentOffset.y
+        let position = scrollView.contentOffset.y
         if position > (tableView.contentSize.height-100-scrollView.frame.size.height) {
             guard !isPaginating else {
                 return
             }
             self.tableView.tableFooterView = createSpinenrFooter()
             
-                // Fetch the next page of data and reload the table view.
+            // Fetch the next page of data and reload the table view.
             fetchData(paginating: true, URL: data?.next ?? "null"){ [weak self] result in
                 DispatchQueue.main.async {
                     self?.tableView.tableFooterView = nil
@@ -71,21 +74,13 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
                 case .success(let data):
                     self?.data?.results.append(contentsOf: data.results)
                     self?.data?.next = data.next
-                        DispatchQueue.main.async {
-                            self?.tableView.reloadData()
-                        
-                }
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
                 case .failure(_):
                     break
                 }
-                
-                }
             }
-        }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 2{
-            performSegue(withIdentifier: "toPokemonDetail", sender: nil)
         }
     }
     
@@ -106,14 +101,41 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
         cell.contentView.layer.cornerRadius = 20
         cell.contentView.layer.backgroundColor = CGColor(red: 0.2, green: 0.2, blue: 0.6, alpha: 0.6)
         
-       
+        
         cell.pokeLB.text = data?.results[indexPath.row].name
         
         let urlData =
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(indexPath.row + 1).png"
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(indexPath.row + 1).png"
+        
+        
         cell.pokeIV.sd_setImage(with: URL(string: urlData), placeholderImage: UIImage(named: "splash screen"))
         
         return cell
     }
     
-}
+    // MARK: - Navigation
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        let pokemon = data?.results[indexPath.row]
+        let pokemonTuple = (indexPath.row,pokemon)
+        
+        
+        performSegue(withIdentifier: "toPokemonDetail", sender: pokemonTuple)
+        
+        return indexPath
+    }
+    
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "toPokemonDetail" {
+                
+                guard let destinationVC = segue.destination as? PokemonDetailVC else { return }
+                guard let PokemonTuple = sender as? (Int, Results) else  { return }
+                
+                destinationVC.pokemonIndex = PokemonTuple.0
+                destinationVC.Pokemon = PokemonTuple.1
+                
+            }
+        }
+        
+    }
+
