@@ -45,7 +45,7 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
     
     //Die Methode createSpinnerFooter() erstellt eine Ansicht mit einem UIActivityIndicatorView, der sich dreht, um anzuzeigen, dass die App Daten lädt.
     private func createSpinenrFooter() -> UIView {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size .width, height: 80))
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size .width, height: 94))
         
         let spinner = UIActivityIndicatorView()
         spinner.center = footerView.center
@@ -83,8 +83,19 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
             }
         }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2{
+            performSegue(withIdentifier: "toPokemonDetail", sender: nil)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data?.results.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,6 +105,7 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
         
         cell.contentView.layer.cornerRadius = 20
         cell.contentView.layer.backgroundColor = CGColor(red: 0.2, green: 0.2, blue: 0.6, alpha: 0.6)
+        
        
         cell.pokeLB.text = data?.results[indexPath.row].name
         

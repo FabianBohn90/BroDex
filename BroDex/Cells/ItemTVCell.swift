@@ -21,5 +21,4 @@ class ItemTVCell: UITableViewCell {
     @IBOutlet weak var itemIV: UIImageView!
     @IBOutlet weak var itemLB: UILabel!
 
-
 }
