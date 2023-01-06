@@ -30,9 +30,9 @@ class PokeDexController: UIViewController {
             switch result{
             case .success(let data):
                  self.data = data
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-            }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+        }
             case .failure(_):
                 break
             }
@@ -132,7 +132,7 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
                 guard let PokemonTuple = sender as? (Int, Results) else  { return }
                 
                 destinationVC.pokemonIndex = PokemonTuple.0
-                destinationVC.Pokemon = PokemonTuple.1
+                destinationVC.pokemon = PokemonTuple.1
                 
             }
         }

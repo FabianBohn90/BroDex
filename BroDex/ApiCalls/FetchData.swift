@@ -28,7 +28,7 @@ func fetchData(paginating:Bool = false, URL Url:String, completion: @escaping (R
                 }
                 
             }catch {
-                print("Parsing Error")
+                print("ERROR: \(error)")
             }
             
         }
@@ -46,7 +46,7 @@ func fetchPokemon( URL Url:String, completion: @escaping (Pokemon) -> Void) {
                 let fetchingData = try JSONDecoder().decode (Pokemon.self, from: data!)
                 completion(fetchingData)
             }catch {
-                print("Parsing Error")
+                print("ERROR: \(error)")
             }
         }
         dataTask.resume ()
