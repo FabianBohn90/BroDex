@@ -31,7 +31,7 @@ class PokemonDetailVC: UIViewController {
             self.pokeData = result
             
             DispatchQueue.main.async {
-                self.nameLabel.text = self.pokeData?.name
+                self.nameLabel.text = translatePokemonName(englishName: self.pokeData!.name)
                 self.numberLabel.text?.append("\( self.pokeData?.id ?? 0)")
                 
                 guard let urlData = self.pokeData?.sprites.other.propertyWithHyphen.front_default else { return }

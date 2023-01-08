@@ -81,6 +81,11 @@ extension ItemDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
         return data?.results.count ?? 0
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+        
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemTVCell else {
             fatalError("Unexpected cell class dequeued")

@@ -13,6 +13,8 @@ class PokeDexController: UIViewController {
     
     let url = "https://pokeapi.co/api/v2/pokemon?limit=40"
     var data: Response?
+    var pokeData: Pokemon?
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -102,13 +104,16 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
         cell.contentView.layer.backgroundColor = CGColor(red: 0.2, green: 0.2, blue: 0.6, alpha: 0.6)
         
         
-        cell.pokeLB.text = data?.results[indexPath.row].name
+        cell.pokeLB.text = translatePokemonName(englishName: (data?.results[indexPath.row].name)!)
         
-        let urlData =
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(indexPath.row + 1).png"
-        
-        
-        cell.pokeIV.sd_setImage(with: URL(string: urlData), placeholderImage: UIImage(named: "splash screen"))
+        fetchPokemon(URL: (data?.results[indexPath.row].url)!) {result in
+            self.pokeData = result
+            
+            DispatchQueue.main.async {
+                let urlData = self.pokeData?.sprites.other.propertyWithHyphen.front_default
+                cell.pokeIV.sd_setImage(with: URL(string: urlData!), placeholderImage: UIImage(named: "splash screen"))
+            }
+        }
         
         return cell
     }

@@ -9,13 +9,13 @@ import Foundation
 
 struct Pokemon: Decodable {
     let abilities: [abilities]
-    let base_experience: Int
+    let base_experience: Int?
     let height: Int
     let id: Int
     let location_area_encounters: String
     let moves: [moves]
     let name: String
-    let sprites: sprites
+    let sprites: pokeSprites
     let stats: [stats]
     let types: [types]
     let weight: Int
@@ -53,10 +53,9 @@ struct version_group: Decodable {
     let url: String
 }
 
-struct sprites: Decodable {
+struct pokeSprites: Decodable {
     let other: other
 }
-
 
 struct other: Decodable {
     let propertyWithHyphen: propertyWithHyphen
