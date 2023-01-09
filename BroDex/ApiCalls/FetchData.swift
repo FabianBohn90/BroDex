@@ -51,3 +51,18 @@ func fetchPokemon( URL Url:String, completion: @escaping (Pokemon) -> Void) {
         }
         dataTask.resume ()
 }
+
+func fetchItem( URL Url:String, completion: @escaping (Item) -> Void) {
+   
+        let url = URL(string: Url)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: url!) { data, response, error in
+            do {
+                let fetchingData = try JSONDecoder().decode (Item.self, from: data!)
+                completion(fetchingData)
+            }catch {
+                print("ERROR: \(error)")
+            }
+        }
+        dataTask.resume ()
+}

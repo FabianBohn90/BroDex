@@ -26,7 +26,10 @@ class PokeTVCell: UITableViewCell {
     
 
     @IBOutlet weak var pokeIV: UIImageView!
-    @IBOutlet weak var pokeLB: UILabel!
-
-
+    @IBOutlet weak var pokeNameLB: UILabel!
+    @IBOutlet weak var pokeNumberLB: UILabel!
+    @IBOutlet weak var pokeType1LB: UILabel!
+    @IBOutlet weak var pokeType2LB: UILabel!
+    
+    
 }

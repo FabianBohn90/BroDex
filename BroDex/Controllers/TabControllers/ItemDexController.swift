@@ -11,6 +11,7 @@ class ItemDexController: UIViewController {
     
     let url = "https://pokeapi.co/api/v2/item?limit=60"
     var data: Response?
+    var itemData: Item?
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -90,13 +91,27 @@ extension ItemDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemTVCell else {
             fatalError("Unexpected cell class dequeued")
         }
+        fetchItem(URL: (data?.results[indexPath.row].url)!) {result in
+            self.itemData = result
+            
+            DispatchQueue.main.async {
+                if (self.itemData?.names.count)! >= 4{
+                    
+                    cell.itemLB.text = self.itemData?.names[4].name
+                }else {
+                    cell.itemLB.text = self.itemData?.names[0].name
+                }
+                
+                let urlData = self.itemData?.sprites.default
+                
+                cell.itemIV.sd_setImage(with: URL(string: urlData ?? "error"), placeholderImage: UIImage(named: "splash screen"))
+            }
+            
+            
+        }
+//        cell.itemLB.text = data?.results[indexPath.row].name
         
-        cell.itemLB.text = data?.results[indexPath.row].name
-        
-        let urlData =
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/\(data!.results[indexPath.row].name).png"
-        
-        cell.itemIV.sd_setImage(with: URL(string: urlData), placeholderImage: UIImage(named: "splash screen"))
+       
         return cell
     }
     

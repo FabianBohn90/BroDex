@@ -53,8 +53,7 @@ class PokemonDetailVC: UIViewController {
                     self.abilitieOneLabel.text = self.pokeData?.abilities[0].ability.name
                     self.abilitieTwoLabel.text = self.pokeData?.abilities[1].ability.name
                 }
-    }
-//            print(String(describing: self.pokeData))
+            }
         }
         
         

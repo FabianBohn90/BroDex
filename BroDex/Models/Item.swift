@@ -19,7 +19,6 @@ struct Item : Decodable {
     
 }
 
-
 struct attributes: Decodable {
     let name: String
     let url: String

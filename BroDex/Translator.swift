@@ -9,7 +9,6 @@ import Foundation
 
 let translationTable: [String: String] = [
     
-    
     // MARK: 1. Generation
     
     "bulbasaur": "Bisasam",
@@ -516,7 +515,6 @@ let translationTable: [String: String] = [
     "shaymin-land":"Shaymin",
     "arceus":"Arceus",
     
-    
     //-----------------------------------------------------
     //MARK: 5. Genaration
     
@@ -750,7 +748,6 @@ let translationTable: [String: String] = [
     "hoopa":"Hoopa",
     "volcanion":"Volcanion",
     
-    
     //-----------------------------------------------------
     // MARK: 7. Generation
     
@@ -843,7 +840,6 @@ let translationTable: [String: String] = [
     "meltan":"Meltan",
     "melmetal":"Melmetal",
 
-    
     //-----------------------------------------------------
     // MARK: 8. Generation
     
@@ -931,9 +927,9 @@ let translationTable: [String: String] = [
     "kubfu" : "Dakuma" ,
     "urshifu-single-strike" : "Wulaosu" ,
     "zarude" : "Zarude" ,
-    "regieleki" : "Regieleki" ,
-    "regidrago" : "Regidrago" ,
-    "glastrier" : "Polaross" ,
+    "regieleki" : "Regieleki",
+    "regidrago" : "Regidrago",
+    "glastrier" : "Polaross",
     "spectrier" : "Phantoross" ,
     "calyrex" : "Coronospa" ,
     "wyrdeer" : "Damythir" ,
@@ -944,7 +940,6 @@ let translationTable: [String: String] = [
     "overqwil" : "Myriador" ,
     "enamorus-incarnate" : "Cupidos" ,
 
-    
 ]
 
 func translatePokemonName(englishName: String) -> String {
@@ -954,3 +949,36 @@ func translatePokemonName(englishName: String) -> String {
         return englishName
     }
 }
+
+
+// MARK: Typen Translator
+
+let translationTableType: [String: String] = [
+    "fire" : "Feuer",
+    "grass" : "Pflanze",
+    "poison" : "Gift",
+    "water" : "Wasser",
+    "bug" : "Käfer",
+    "flying" : "Flug",
+    "normal" : "Normal",
+    "electric" : "Elektro",
+    "ground" : "Boden",
+    "fairy" : "Fee",
+    "fighting" : "Kampf",
+    "psychic" : "Psycho",
+    "rock" : "Gestein",
+    "ice" : "Eis",
+    "dark" : "Unlicht",
+    "steel" : "Stahl",
+    "dragon" : "Drache",
+    "ghost" : "Geist",
+]
+
+func translateTypeName(englishName: String) -> String {
+    if let germanName = translationTableType[englishName] {
+        return germanName
+    } else {
+        return englishName
+    }
+}
+
