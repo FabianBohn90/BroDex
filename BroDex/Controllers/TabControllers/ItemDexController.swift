@@ -9,7 +9,7 @@ import UIKit
 
 class ItemDexController: UIViewController {
     
-    let url = "https://pokeapi.co/api/v2/item?limit=60"
+    let url = "https://pokeapi.co/api/v2/item?limit=140"
     var data: Response?
     var itemData: Item?
 
@@ -99,7 +99,7 @@ extension ItemDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
                     
                     cell.itemLB.text = self.itemData?.names[4].name
                 }else {
-                    cell.itemLB.text = self.itemData?.names[0].name
+                    cell.itemLB.text = self.itemData?.name
                 }
                 
                 let urlData = self.itemData?.sprites.default

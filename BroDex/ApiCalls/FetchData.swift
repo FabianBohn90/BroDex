@@ -14,7 +14,7 @@ func fetchData(paginating:Bool = false, URL Url:String, completion: @escaping (R
     if paginating{
         isPaginating = true
     }
-    DispatchQueue.global().asyncAfter(deadline: .now() + (paginating ? 0.75: 0.5), execute: {
+    DispatchQueue.global().asyncAfter(deadline: .now() + (paginating ? 0.05: 1.0), execute: {
         
         let url = URL(string: Url)
         let session = URLSession.shared
@@ -59,6 +59,21 @@ func fetchItem( URL Url:String, completion: @escaping (Item) -> Void) {
         let dataTask = session.dataTask(with: url!) { data, response, error in
             do {
                 let fetchingData = try JSONDecoder().decode (Item.self, from: data!)
+                completion(fetchingData)
+            }catch {
+                print("ERROR: \(error)")
+            }
+        }
+        dataTask.resume ()
+}
+
+func fetchAbilities( URL Url:String, completion: @escaping (Abilities) -> Void) {
+   
+        let url = URL(string: Url)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: url!) { data, response, error in
+            do {
+                let fetchingData = try JSONDecoder().decode (Abilities.self, from: data!)
                 completion(fetchingData)
             }catch {
                 print("ERROR: \(error)")

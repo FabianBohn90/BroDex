@@ -14,6 +14,7 @@ struct Item : Decodable {
     let effect_entries: [effect_entries]
     let flavor_text_entries: [flavor_text_entries]
     let id : Int
+    let name: String
     let names : [names]
     let sprites: itemSprites
     
@@ -31,7 +32,6 @@ struct category: Decodable {
 
 struct effect_entries: Decodable {
     let effect: String
-    let short_effect: String
 }
 
 struct flavor_text_entries: Decodable {

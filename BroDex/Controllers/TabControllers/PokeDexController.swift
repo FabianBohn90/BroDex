@@ -10,23 +10,19 @@ import SDWebImage
 
 class PokeDexController: UIViewController {
     
-    
-    let url = "https://pokeapi.co/api/v2/pokemon?limit=40"
+    let url = "https://pokeapi.co/api/v2/pokemon?limit=80"
     var data: Response?
     var pokeData: Pokemon?
     
     
     @IBOutlet weak var tableView: UITableView!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
         tableView.delegate = self
-        
-        
-        
+    
         fetchData(URL: url) {result in
             
             switch result{
@@ -131,24 +127,24 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
                 let pokeType = self.pokeData?.types[0].type.name
                 
                 switch pokeType{
-                case "fire":     cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.816, green: 0.255, blue: 0.153, alpha: 1.0)
-                case "grass":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.376, green: 0.694, blue: 0.22, alpha: 1.0)
-                case "water":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.125, green: 0.51, blue: 0.898, alpha: 1.0)
-                case "steel":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.525, green: 0.522, blue: 0.667, alpha: 1.0)
-                case "bug":      cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.616, green: 0.663, blue: 0.078, alpha: 1.0)
-                case "flying":   cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.439, green: 0.518, blue: 0.855, alpha: 1.0)
-                case "normal":   cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.545, green: 0.478, blue: 0.373, alpha: 1.0)
-                case "poison":   cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.569, green: 0.231, blue: 0.51, alpha: 1.0)
-                case "electric": cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.867, green: 0.643, blue: 0.047, alpha: 1.0)
-                case "ground":   cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.694, green: 0.557, blue: 0.157, alpha: 1.0)
-                case "fairy":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.839, green: 0.529, blue: 0.839, alpha: 1.0)
-                case "fighting": cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.498, green: 0.2, blue: 0.11, alpha: 1.0)
-                case "psychic":  cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.812, green: 0.247, blue: 0.447, alpha: 1.0)
-                case "rock":     cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.627, green: 0.525, blue: 0.192, alpha: 1.0)
-                case "ghost":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.247, green: 0.247, blue: 0.584, alpha: 1.0)
-                case "ice":      cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.129, green: 0.659, blue: 0.776, alpha: 1.0)
-                case "dragon":   cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.388, green: 0.278, blue: 0.824, alpha: 1.0)
-                case "dark":     cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.325, green: 0.247, blue: 0.204, alpha: 1.0)
+                case "fire":      cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.816, green: 0.255, blue: 0.153, alpha: 1.0)
+                case "grass":     cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.376, green: 0.694, blue: 0.22, alpha: 1.0)
+                case "water":     cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.125, green: 0.51, blue: 0.898, alpha: 1.0)
+                case "steel":     cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.525, green: 0.522, blue: 0.667, alpha: 1.0)
+                case "bug":       cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.616, green: 0.663, blue: 0.078, alpha: 1.0)
+                case "flying":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.439, green: 0.518, blue: 0.855, alpha: 1.0)
+                case "normal":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.545, green: 0.478, blue: 0.373, alpha: 1.0)
+                case "poison":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.569, green: 0.231, blue: 0.51, alpha: 1.0)
+                case "electric":  cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.867, green: 0.643, blue: 0.047, alpha: 1.0)
+                case "ground":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.694, green: 0.557, blue: 0.157, alpha: 1.0)
+                case "fairy":     cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.839, green: 0.529, blue: 0.839, alpha: 1.0)
+                case "fighting":  cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.498, green: 0.2, blue: 0.11, alpha: 1.0)
+                case "psychic":   cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.812, green: 0.247, blue: 0.447, alpha: 1.0)
+                case "rock":      cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.627, green: 0.525, blue: 0.192, alpha: 1.0)
+                case "ghost":     cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.247, green: 0.247, blue: 0.584, alpha: 1.0)
+                case "ice":       cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.129, green: 0.659, blue: 0.776, alpha: 1.0)
+                case "dragon":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.388, green: 0.278, blue: 0.824, alpha: 1.0)
+                case "dark":      cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.325, green: 0.247, blue: 0.204, alpha: 1.0)
                     
                 case .none:
                     cell.contentView.layer.backgroundColor = CGColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.6)
