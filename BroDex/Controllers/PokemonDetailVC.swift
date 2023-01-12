@@ -15,8 +15,11 @@ class PokemonDetailVC: UIViewController {
     var pokeData: Pokemon?
     var abilitiesData: Abilities?
 
-    @IBOutlet weak var numberLabel: UILabel!
+    
+    @IBOutlet weak var mainStackView: UIStackView!
+    @IBOutlet weak var naviItems: UINavigationItem!
     @IBOutlet weak var pokeIV: UIImageView!
+    @IBOutlet weak var bgGradientIV: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var typeOneLabel: UILabel!
     @IBOutlet weak var typeTwoLabel: UILabel!
@@ -46,13 +49,23 @@ class PokemonDetailVC: UIViewController {
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
+        
+//        mainStackView.backgroundColor = mainStackView.backgroundColor?.withAlphaComponent(0.2)
+//        mainStackView.layer.cornerRadius = 20
+//        mainStackView.backgroundColor?.withAlphaComponent(0.1)
+
+        
+        naviItems.title = "Bisasam #1"
 
         fetchPokemon(URL: pokemon?.url ?? "error"){result in
             self.pokeData = result
             
             DispatchQueue.main.async {
                 self.nameLabel.text = translatePokemonName(englishName: self.pokeData!.name)
-                self.numberLabel.text?.append("\( self.pokeData?.id ?? 0)")
+                self.nameLabel.text?.append(" #\( self.pokeData?.id ?? 0)")
+                
+                self.naviItems.title = translatePokemonName(englishName: self.pokeData!.name)
+                self.naviItems.title?.append(" #\( self.pokeData?.id ?? 0)")
                 
                 guard let urlData = self.pokeData?.sprites.other.propertyWithHyphen.front_default else { return }
                 self.pokeIV.sd_setImage(with: URL(string: urlData), placeholderImage: UIImage(named: "splash screen"))
@@ -79,6 +92,31 @@ class PokemonDetailVC: UIViewController {
                 
                 self.heightLabel.text = "Höhe \(Double(self.pokeData!.height) / 10) m"
                 self.weightLabel.text = "Gewicht \(Double(self.pokeData!.weight) / 10) kg"
+                
+                switch self.pokeData?.types[0].type.name {
+                case "fire" : self.bgGradientIV.image = UIImage(named: "Fire Gradient")
+                case "grass" : self.bgGradientIV.image = UIImage(named: "Plant Gradient")
+                case "water" : self.bgGradientIV.image = UIImage(named: "Water Gradient")
+                case "steel" : self.bgGradientIV.image = UIImage(named: "Steele Gradient")
+                case "ice" : self.bgGradientIV.image = UIImage(named: "Ice Gradient")
+                case "flying" : self.bgGradientIV.image = UIImage(named: "Flying Gradient")
+                case "poison" : self.bgGradientIV.image = UIImage(named: "Poison Gradient")
+                case "ground" : self.bgGradientIV.image = UIImage(named: "Ground Gradient")
+                case "bug" : self.bgGradientIV.image = UIImage(named: "Bug Gradient")
+                case "ghost" : self.bgGradientIV.image = UIImage(named: "Ghost Gradient")
+                case "normal" : self.bgGradientIV.image = UIImage(named: "Normal Gradient")
+                case "fairy" : self.bgGradientIV.image = UIImage(named: "Fairy Gradient")
+                case "fighting" : self.bgGradientIV.image = UIImage(named: "Fighting Gradient")
+                case "electric" : self.bgGradientIV.image = UIImage(named: "Electro Gradient")
+                case "dragon" : self.bgGradientIV.image = UIImage(named: "Dragon Gradient")
+                case "rock" : self.bgGradientIV.image = UIImage(named: "Rock Gradient")
+                case "psychic" : self.bgGradientIV.image = UIImage(named: "Psycho Gradient")
+                case "dark" : self.bgGradientIV.image = UIImage(named: "Dark Gradient")
+                case .none:
+                    return
+                case .some(_):
+                    return
+                }
                 
                 if self.pokeData?.types.count == 1 {
                     self.typeOneLabel.text = translateTypeName(englishName: (self.pokeData?.types[0].type.name)!)

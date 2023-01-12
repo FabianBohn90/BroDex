@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class PokeDexController: UIViewController {
+class PokeDexController: UIViewController, UISearchBarDelegate {
     
     let url = "https://pokeapi.co/api/v2/pokemon?limit=80"
     var data: Response?
@@ -16,12 +16,14 @@ class PokeDexController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var pokeSearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
         tableView.delegate = self
+        pokeSearchBar.delegate = self
     
         fetchData(URL: url) {result in
             
@@ -36,6 +38,24 @@ class PokeDexController: UIViewController {
             }
         }
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            // Perform search
+        searchPokemon(searchTerm: searchBar.text ?? "") {result in
+            switch result{
+            case .success(let data):
+                
+                self.data?.results = data
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+        }
+            case .failure(_):
+                break
+            }
+            
+        }
+            print("Searching for: \(searchBar.text ?? "")")
+        }
 }
 
 //MARK: TabelView Setup
@@ -119,6 +139,7 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
                 }else {
                     cell.pokeType1LB.text = translateTypeName(
                         englishName: self.pokeData?.types[0].type.name ?? "error")
+                    cell.pokeType2LB.isHidden = false
                     cell.pokeType2LB.text = translateTypeName(
                         englishName: self.pokeData?.types[1].type.name ?? "error")
                     

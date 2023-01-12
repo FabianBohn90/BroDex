@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		892BE20A296EEAC400A3F64E /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892BE209296EEAC400A3F64E /* SearchData.swift */; };
+		892BE20C296F0C2600A3F64E /* RoundedCornersLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892BE20B296F0C2600A3F64E /* RoundedCornersLabel.swift */; };
 		892E892D296D82C9004FE34F /* Abilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892E892C296D82C9004FE34F /* Abilities.swift */; };
 		8940F2372962DB9600AC4EEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F2362962DB9600AC4EEB /* AppDelegate.swift */; };
 		8940F2392962DB9600AC4EEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F2382962DB9600AC4EEB /* SceneDelegate.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		892BE209296EEAC400A3F64E /* SearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
+		892BE20B296F0C2600A3F64E /* RoundedCornersLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersLabel.swift; sourceTree = "<group>"; };
 		892E892C296D82C9004FE34F /* Abilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Abilities.swift; sourceTree = "<group>"; };
 		8940F2332962DB9600AC4EEB /* BroDex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BroDex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8940F2362962DB9600AC4EEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 				8940F2472962DB9800AC4EEB /* Info.plist */,
 				8940F23F2962DB9600AC4EEB /* BroDex.xcdatamodeld */,
 				89C8F579296A74D000A6F5DD /* Translator.swift */,
+				892BE20B296F0C2600A3F64E /* RoundedCornersLabel.swift */,
 			);
 			path = BroDex;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				8940F258296302DC00AC4EEB /* FetchData.swift */,
+				892BE209296EEAC400A3F64E /* SearchData.swift */,
 			);
 			path = ApiCalls;
 			sourceTree = "<group>";
@@ -240,7 +246,9 @@
 				8940F24E2962F58200AC4EEB /* ItemDexController.swift in Sources */,
 				8940F2372962DB9600AC4EEB /* AppDelegate.swift in Sources */,
 				8940F261296312B900AC4EEB /* ItemTVCell.swift in Sources */,
+				892BE20A296EEAC400A3F64E /* SearchData.swift in Sources */,
 				89DF00B9296453350058B329 /* Pokemon.swift in Sources */,
+				892BE20C296F0C2600A3F64E /* RoundedCornersLabel.swift in Sources */,
 				8940F25E29630C9D00AC4EEB /* PokeTVCell.swift in Sources */,
 				89893AB62966E16C0008B013 /* PokemonDetailVC.swift in Sources */,
 				8940F2392962DB9600AC4EEB /* SceneDelegate.swift in Sources */,
