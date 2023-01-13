@@ -8,14 +8,8 @@
 import Foundation
 
 
-var isPaginating = false
-
-func fetchData(paginating:Bool = false, URL Url:String, completion: @escaping (Result<Response, Error>) -> Void) {
-    if paginating{
-        isPaginating = true
-    }
-    DispatchQueue.global().asyncAfter(deadline: .now() + (paginating ? 0.05: 1.0), execute: {
-        
+func fetchData(URL Url:String, completion: @escaping (Result<Response, Error>) -> Void) {
+    
         let url = URL(string: Url)
         let session = URLSession.shared
         
@@ -23,17 +17,12 @@ func fetchData(paginating:Bool = false, URL Url:String, completion: @escaping (R
             do {
                 let fetchingData = try JSONDecoder().decode (Response.self, from: data!)
                 completion(.success(fetchingData))
-                if paginating {
-                    isPaginating = false
-                }
-                
             }catch {
                 print("ERROR: \(error)")
             }
             
         }
         dataTask.resume ()
-    })
 }
       
 

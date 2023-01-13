@@ -8,11 +8,11 @@
 import Foundation
 
 struct Response: Decodable {
-    var next: String
+    var next: String?
     var results: [Results]
 }
 
 struct Results: Decodable {
-    let name: String
+    var name: String
     let url: String
 }

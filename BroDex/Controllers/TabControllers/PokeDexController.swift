@@ -10,9 +10,12 @@ import SDWebImage
 
 class PokeDexController: UIViewController, UISearchBarDelegate {
     
-    let url = "https://pokeapi.co/api/v2/pokemon?limit=80"
+    let url = "https://pokeapi.co/api/v2/pokemon?limit=905"
     var data: Response?
+    var germanData: Response?
     var pokeData: Pokemon?
+    var filteredData: [Results]?
+    var isSearching = false
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -24,6 +27,11 @@ class PokeDexController: UIViewController, UISearchBarDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         pokeSearchBar.delegate = self
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+
     
         fetchData(URL: url) {result in
             
@@ -31,79 +39,58 @@ class PokeDexController: UIViewController, UISearchBarDelegate {
             case .success(let data):
                  self.data = data
                 DispatchQueue.main.async {
+                    self.germanData = self.data
+                    for i in 0..<(self.data?.results.count)! {
+                        self.germanData?.results[i].name = translatePokemonName(englishName: (self.data?.results[i].name)!)
+                    }
                     self.tableView.reloadData()
         }
+                
             case .failure(_):
                 break
             }
         }
     }
     
+    @objc func hideKeyboard() {
+        view.endEditing(true)
+        
+    }
+
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+       
+        
+        filteredData = germanData?.results.filter { $0.name.range(of: searchText, options: .caseInsensitive) != nil  }
+        isSearching = true
+           tableView.reloadData()
+        
+        if searchBar.text == "" {
+            isSearching = false
+            tableView.reloadData()
+        }
+        
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            // Perform search
-        searchPokemon(searchTerm: searchBar.text ?? "") {result in
-            switch result{
-            case .success(let data):
-                
-                self.data?.results = data
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+        view.endEditing(true)
+        if searchBar.text == "" {
+            isSearching = false
+            tableView.reloadData()
         }
-            case .failure(_):
-                break
-            }
-            
-        }
-            print("Searching for: \(searchBar.text ?? "")")
-        }
+    }
 }
 
 //MARK: TabelView Setup
 
 extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     
-    
-    //Die Methode createSpinnerFooter() erstellt eine Ansicht mit einem UIActivityIndicatorView, der sich dreht, um anzuzeigen, dass die App Daten lädt.
-    private func createSpinenrFooter() -> UIView {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size .width, height: 94))
-        let spinner = UIActivityIndicatorView()
-        
-        spinner.center = footerView.center
-        footerView.addSubview(spinner)
-        spinner.startAnimating()
-        
-        return footerView
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let position = scrollView.contentOffset.y
-        if position > (tableView.contentSize.height-100-scrollView.frame.size.height) {
-            guard !isPaginating else {
-                return
-            }
-            self.tableView.tableFooterView = createSpinenrFooter()
-            
-            // Fetch the next page of data and reload the table view.
-            fetchData(paginating: true, URL: data?.next ?? "null"){ [weak self] result in
-                DispatchQueue.main.async {
-                    self?.tableView.tableFooterView = nil
-                }
-                switch result{
-                case .success(let data):
-                    self?.data?.results.append(contentsOf: data.results)
-                    self?.data?.next = data.next
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
-                    }
-                case .failure(_):
-                    break
-                }
-            }
-        }
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data?.results.count ?? 0
+        if isSearching == false{
+            return germanData?.results.count ?? 0
+        } else {
+            return filteredData?.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -111,17 +98,27 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
         
     }
     
+
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "pokeCell", for: indexPath) as? PokeTVCell else {
             fatalError("Unexpected cell class dequeued")
         }
         
+        
+        var urlData = (germanData?.results[indexPath.row].url)!
+        var pokeNameData = (germanData?.results[indexPath.row].name)!
+        
+        if self.isSearching == true {
+            urlData = (filteredData?[indexPath.row].url)!
+            pokeNameData = (filteredData?[indexPath.row].name)!
+        }
+        
         cell.contentView.layer.cornerRadius = 20
         
-        cell.pokeNameLB.text = translatePokemonName(englishName: (data?.results[indexPath.row].name)!)
+        cell.pokeNameLB.text = pokeNameData
         
-        
-        fetchPokemon(URL: (data?.results[indexPath.row].url)!) {result in
+        fetchPokemon(URL: urlData) {result in
             self.pokeData = result
             
             DispatchQueue.main.async {
@@ -181,8 +178,11 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
     // MARK: - Navigation
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        let pokemon = data?.results[indexPath.row]
-        let pokemonTuple = (indexPath.row,pokemon)
+        var pokemon = germanData?.results[indexPath.row]
+        if isSearching == true { pokemon = filteredData?[indexPath.row] }
+        
+        let pokeID = pokeData?.id
+        let pokemonTuple = (pokeID, pokemon)
         
         performSegue(withIdentifier: "toPokemonDetail", sender: pokemonTuple)
         
@@ -200,6 +200,5 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
                 
             }
         }
-        
     }
 

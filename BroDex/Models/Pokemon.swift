@@ -89,7 +89,3 @@ struct type: Decodable {
     let name : String
     let url : String
 }
-
-
-
-

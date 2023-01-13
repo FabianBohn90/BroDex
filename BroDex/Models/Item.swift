@@ -53,6 +53,6 @@ struct language: Decodable {
 }
 
 struct itemSprites: Decodable {
-    let `default`: String
+    let `default`: String?
     
 }

@@ -49,13 +49,6 @@ class PokemonDetailVC: UIViewController {
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
-        
-//        mainStackView.backgroundColor = mainStackView.backgroundColor?.withAlphaComponent(0.2)
-//        mainStackView.layer.cornerRadius = 20
-//        mainStackView.backgroundColor?.withAlphaComponent(0.1)
-
-        
-        naviItems.title = "Bisasam #1"
 
         fetchPokemon(URL: pokemon?.url ?? "error"){result in
             self.pokeData = result
