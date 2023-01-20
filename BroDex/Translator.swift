@@ -986,3 +986,22 @@ func translateTypeName(englishName: String) -> String {
     }
 }
 
+// MARK: Stats Translator
+
+let translationTableStats: [String: String] = [
+    "hp" : "Kraftpunkte",
+    "attack" : "Angriff",
+    "defense" : "Verteidigung",
+    "special-attack" : "Spezial-Angriff",
+    "special-defense" : "Spezial-Verteidigung",
+    "speed" : "Initiative",
+]
+
+func translateStatsName(englishName: String) -> String {
+    if let germanName = translationTableStats[englishName] {
+        return germanName
+    } else {
+        return englishName
+    }
+}
+

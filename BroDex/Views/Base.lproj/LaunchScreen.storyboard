@@ -16,19 +16,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash screen" translatesAutoresizingMaskIntoConstraints="NO" id="Gde-jx-AvV">
-                                <rect key="frame" x="76.666666666666686" y="306" width="240" height="240"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash screen" translatesAutoresizingMaskIntoConstraints="NO" id="Gde-jx-AvV">
+                                <rect key="frame" x="-53.666666666666657" y="176" width="500.33333333333326" height="500"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="rRi-k5-KCi"/>
-                                    <constraint firstAttribute="width" constant="240" id="y0F-8X-GXB"/>
+                                    <constraint firstAttribute="height" constant="500" id="Q5m-dK-jeU"/>
+                                    <constraint firstAttribute="width" constant="500" id="gd8-20-967"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rfr-WL-aTl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Gde-jx-AvV" firstAttribute="centerY" secondItem="S3b-Bm-44K" secondAttribute="centerY" id="389-0Q-NWw"/>
-                            <constraint firstItem="Gde-jx-AvV" firstAttribute="centerX" secondItem="S3b-Bm-44K" secondAttribute="centerX" id="CkB-ct-YtS"/>
+                            <constraint firstItem="Gde-jx-AvV" firstAttribute="centerY" secondItem="S3b-Bm-44K" secondAttribute="centerY" id="7hR-tz-3cO"/>
+                            <constraint firstItem="Gde-jx-AvV" firstAttribute="centerX" secondItem="S3b-Bm-44K" secondAttribute="centerX" id="MLb-Yd-A3b"/>
+                            <constraint firstItem="Gde-jx-AvV" firstAttribute="centerX" secondItem="S3b-Bm-44K" secondAttribute="centerX" id="rrB-rp-CLG"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash screen" width="1024" height="1024"/>
+        <image name="splash screen" width="682.66668701171875" height="682.66668701171875"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Type_Icon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "book_comic_dc_flash_movie_icon_183187-2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "book_comic_dc_flash_movie_icon_183187.png",
+      "filename" : "Potion_icon-icons.com_67510.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

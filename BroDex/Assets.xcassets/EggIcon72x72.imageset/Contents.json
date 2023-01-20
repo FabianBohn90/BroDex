@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Type_Icon.png",
+      "filename" : "EggIcon32x32.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "book_comic_dc_flash_movie_icon_183187-2.png",
+      "filename" : "EggIcon48x48.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "book_comic_dc_flash_movie_icon_183187.png",
+      "filename" : "EggIcon72x72.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

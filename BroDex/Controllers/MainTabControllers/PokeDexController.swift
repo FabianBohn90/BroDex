@@ -21,6 +21,7 @@ class PokeDexController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pokeSearchBar: UISearchBar!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,6 +59,8 @@ class PokeDexController: UIViewController, UISearchBarDelegate {
     }
 
     
+    //MARK: SearchBar Setup
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
        
         
@@ -69,7 +72,6 @@ class PokeDexController: UIViewController, UISearchBarDelegate {
             isSearching = false
             tableView.reloadData()
         }
-        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -123,7 +125,7 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
             
             DispatchQueue.main.async {
                 let urlData = self.pokeData?.sprites.other.propertyWithHyphen.front_default
-                cell.pokeIV.sd_setImage(with: URL(string: urlData!), placeholderImage: UIImage(named: "splash screen"))
+                cell.pokeIV.sd_setImage(with: URL(string: urlData!), placeholderImage: UIImage(named: "missingno"))
                 
                 cell.pokeNumberLB.text = "#\(self.pokeData?.id ?? 0)"
                 
@@ -192,7 +194,7 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "toPokemonDetail" {
                 
-                guard let destinationVC = segue.destination as? PokemonDetailVC else { return }
+                guard let destinationVC = segue.destination as? TabBarController else { return }
                 guard let PokemonTuple = sender as? (Int, Results) else  { return }
                 
                 destinationVC.pokemonIndex = PokemonTuple.0

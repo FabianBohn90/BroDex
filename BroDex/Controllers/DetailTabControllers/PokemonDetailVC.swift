@@ -44,12 +44,13 @@ class PokemonDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationBar.barTintColor = UIColor.clear
         navigationBar.backgroundColor = UIColor.clear
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
-
+        
         fetchPokemon(URL: pokemon?.url ?? "error"){result in
             self.pokeData = result
             
@@ -61,25 +62,25 @@ class PokemonDetailVC: UIViewController {
                 self.naviItems.title?.append(" #\( self.pokeData?.id ?? 0)")
                 
                 guard let urlData = self.pokeData?.sprites.other.propertyWithHyphen.front_default else { return }
-                self.pokeIV.sd_setImage(with: URL(string: urlData), placeholderImage: UIImage(named: "splash screen"))
+                self.pokeIV.sd_setImage(with: URL(string: urlData), placeholderImage: UIImage(named: "missingno"))
                 
                 
-                self.hpNameLabel.text = self.pokeData?.stats[0].stat.name
+                self.hpNameLabel.text = translateStatsName(englishName: (self.pokeData?.stats[0].stat.name)!)
                 self.hpStatLabel.text = String(self.pokeData?.stats[0].base_stat ?? 0)
                 
-                self.attackNameLabel.text = self.pokeData?.stats[1].stat.name
+                self.attackNameLabel.text = translateStatsName(englishName: (self.pokeData?.stats[1].stat.name)!)
                 self.attackStatLabel.text = String(self.pokeData?.stats[1].base_stat ?? 0)
                 
-                self.defenseNameLabel.text = self.pokeData?.stats[2].stat.name
+                self.defenseNameLabel.text = translateStatsName(englishName: (self.pokeData?.stats[2].stat.name)!)
                 self.defenseStatLabel.text = String(self.pokeData?.stats[2].base_stat ?? 0)
                 
-                self.specialAtkNameLabel.text = self.pokeData?.stats[3].stat.name
+                self.specialAtkNameLabel.text = translateStatsName(englishName: (self.pokeData?.stats[3].stat.name)!)
                 self.specialAtkStatLabel.text = String(self.pokeData?.stats[3].base_stat ?? 0)
                 
-                self.specialDefNameLabel.text = self.pokeData?.stats[4].stat.name
+                self.specialDefNameLabel.text = translateStatsName(englishName: (self.pokeData?.stats[4].stat.name)!)
                 self.specialDefStatLabel.text = String(self.pokeData?.stats[4].base_stat ?? 0)
                 
-                self.speedNameLabel.text = self.pokeData?.stats[5].stat.name
+                self.speedNameLabel.text = translateStatsName(englishName: (self.pokeData?.stats[5].stat.name)!)
                 self.speedStatLabel.text = String(self.pokeData?.stats[5].base_stat ?? 0)
                 
                 

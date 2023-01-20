@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Type_Icon.png",
+      "filename" : "Attack 32x32.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "book_comic_dc_flash_movie_icon_183187-2.png",
+      "filename" : "Attack 42x42.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "book_comic_dc_flash_movie_icon_183187.png",
+      "filename" : "Attack 72x72.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
