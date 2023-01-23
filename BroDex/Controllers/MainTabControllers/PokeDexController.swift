@@ -10,7 +10,7 @@ import SDWebImage
 
 class PokeDexController: UIViewController, UISearchBarDelegate {
     
-    let url = "https://pokeapi.co/api/v2/pokemon?limit=905"
+    let url = "https://pokeapi.co/api/v2/pokemon?limit=1008"
     var data: Response?
     var germanData: Response?
     var pokeData: Pokemon?
@@ -125,7 +125,7 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
             
             DispatchQueue.main.async {
                 let urlData = self.pokeData?.sprites.other.propertyWithHyphen.front_default
-                cell.pokeIV.sd_setImage(with: URL(string: urlData!), placeholderImage: UIImage(named: "missingno"))
+                cell.pokeIV.sd_setImage(with: URL(string: urlData ?? "https://i.ibb.co/W2bWG2Q/missingno.png"), placeholderImage: UIImage(named: "missingno"))
                 
                 cell.pokeNumberLB.text = "#\(self.pokeData?.id ?? 0)"
                 

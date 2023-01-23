@@ -61,8 +61,8 @@ class PokemonDetailVC: UIViewController {
                 self.naviItems.title = translatePokemonName(englishName: self.pokeData!.name)
                 self.naviItems.title?.append(" #\( self.pokeData?.id ?? 0)")
                 
-                guard let urlData = self.pokeData?.sprites.other.propertyWithHyphen.front_default else { return }
-                self.pokeIV.sd_setImage(with: URL(string: urlData), placeholderImage: UIImage(named: "missingno"))
+                 let urlData = self.pokeData?.sprites.other.propertyWithHyphen.front_default
+                self.pokeIV.sd_setImage(with: URL(string: urlData ?? "https://i.ibb.co/W2bWG2Q/missingno.png"), placeholderImage: UIImage(named: "missingno"))
                 
                 
                 self.hpNameLabel.text = translateStatsName(englishName: (self.pokeData?.stats[0].stat.name)!)

@@ -13,6 +13,8 @@ struct Item : Decodable {
     let cost: Int
     let effect_entries: [effect_entries]
     let flavor_text_entries: [flavor_text_entries]
+    let fling_effect: String?
+    let fling_power: Int?
     let id : Int
     let name: String
     let names : [names]

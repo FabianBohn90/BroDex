@@ -9,7 +9,7 @@ import UIKit
 
 class ItemDexController: UIViewController, UISearchBarDelegate {
     
-    let url = "https://pokeapi.co/api/v2/item?limit=1605"
+    let url = "https://pokeapi.co/api/v2/item?limit=2050"
     var data: Response?
     var germanData: Response?
     var itemData: Item?
@@ -146,6 +146,40 @@ extension ItemDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
         }
         return cell
     }
+    
+    // MARK: - Navigation
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        var urlData = germanData?.results[indexPath.row].url
+        if isSearching == true { urlData = filteredData?[indexPath.row].url }
+        
+        fetchItem(URL: urlData!) {result in
+            self.itemData = result
+            
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "toItemDetail", sender: self.itemData)
+                
+            }
+        }
+        
+        
+        
+        
+//        performSegue(withIdentifier: "toItemDetail", sender: itemData)
+        
+        return indexPath
+    }
+    
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "toItemDetail" {
+                
+                guard let destinationVC = segue.destination as? ItemDetailVC else { return }
+                guard let itemData = sender as? ( Item ) else  { return }
+                
+                destinationVC.itemData = itemData
+                
+            }
+        }
 }
 
 

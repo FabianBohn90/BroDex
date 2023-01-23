@@ -66,7 +66,7 @@ struct other: Decodable {
 }
 
 struct propertyWithHyphen: Decodable {
-    let front_default : String
+    let front_default : String?
 }
 
 struct stats: Decodable {
