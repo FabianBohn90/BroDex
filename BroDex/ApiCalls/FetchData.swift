@@ -70,3 +70,18 @@ func fetchAbilities( URL Url:String, completion: @escaping (Abilities) -> Void) 
         }
         dataTask.resume ()
 }
+
+func fetchMove( URL Url:String, completion: @escaping (Move) -> Void) {
+   
+        let url = URL(string: Url)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: url!) { data, response, error in
+            do {
+                let fetchingData = try JSONDecoder().decode (Move.self, from: data!)
+                completion(fetchingData)
+            }catch {
+                print("ERROR: \(error)")
+            }
+        }
+        dataTask.resume ()
+}

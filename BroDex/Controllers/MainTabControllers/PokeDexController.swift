@@ -183,8 +183,10 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
         var pokemon = germanData?.results[indexPath.row]
         if isSearching == true { pokemon = filteredData?[indexPath.row] }
         
-        let pokeID = pokeData?.id
-        let pokemonTuple = (pokeID, pokemon)
+        let pokemonTuple = pokemon
+        
+        DataManager.shared.pokemon = pokemon
+        
         
         performSegue(withIdentifier: "toPokemonDetail", sender: pokemonTuple)
         
@@ -195,10 +197,10 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
             if segue.identifier == "toPokemonDetail" {
                 
                 guard let destinationVC = segue.destination as? TabBarController else { return }
-                guard let PokemonTuple = sender as? (Int, Results) else  { return }
+                guard let PokemonTuple = sender as? (Results) else  { return }
                 
-                destinationVC.pokemonIndex = PokemonTuple.0
-                destinationVC.pokemon = PokemonTuple.1
+
+                destinationVC.pokemon = PokemonTuple
                 
             }
         }

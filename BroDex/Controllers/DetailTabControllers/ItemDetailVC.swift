@@ -44,30 +44,30 @@ class ItemDetailVC: UIViewController {
             itemNameLabel.text = itemData?.name
         }
         
-        categorieLabel.text = itemData?.category.name
+        categorieLabel.text = translateItemCategoryName(englishName:itemData?.category.name ?? "-")
         
         switch itemData?.attributes.count {
         case 0 : print("No Attributes")
             
-        case 1 : attributeOneLabel.text = itemData?.attributes[0].name
+        case 1 : attributeOneLabel.text = translateItemAttributeName(englishName: itemData?.attributes[0].name ?? "-")
                 
-        case 2 : attributeOneLabel.text = itemData?.attributes[0].name
-                 attributeTwoLabel.text = itemData?.attributes[1].name
+        case 2 : attributeOneLabel.text = translateItemAttributeName(englishName:itemData?.attributes[0].name ?? "-")
+            attributeTwoLabel.text = translateItemAttributeName(englishName:itemData?.attributes[1].name ?? "-")
             
-        case 3 : attributeOneLabel.text = itemData?.attributes[0].name
-                 attributeTwoLabel.text = itemData?.attributes[1].name
-                 attributeThreeLabel.text = itemData?.attributes[2].name
+        case 3 : attributeOneLabel.text = translateItemAttributeName(englishName:itemData?.attributes[0].name ?? "-")
+            attributeTwoLabel.text = translateItemAttributeName(englishName:itemData?.attributes[1].name ?? "-")
+            attributeThreeLabel.text = translateItemAttributeName(englishName:itemData?.attributes[2].name ?? "-")
         
-        case 4 : attributeOneLabel.text = itemData?.attributes[0].name
-                 attributeTwoLabel.text = itemData?.attributes[1].name
-                 attributeThreeLabel.text = itemData?.attributes[2].name
-                 attributeFourLabel.text = itemData?.attributes[3].name
+        case 4 : attributeOneLabel.text = translateItemAttributeName(englishName:itemData?.attributes[0].name ?? "-")
+            attributeTwoLabel.text = translateItemAttributeName(englishName: itemData?.attributes[1].name ?? "-")
+            attributeThreeLabel.text = translateItemAttributeName(englishName:itemData?.attributes[2].name ?? "-")
+            attributeFourLabel.text = translateItemAttributeName(englishName: itemData?.attributes[3].name ?? "-")
             
-        case 5 : attributeOneLabel.text = itemData?.attributes[0].name
-                 attributeTwoLabel.text = itemData?.attributes[1].name
-                 attributeThreeLabel.text = itemData?.attributes[2].name
-                 attributeFourLabel.text = itemData?.attributes[3].name
-                 attributeFiveLabel.text = itemData?.attributes[4].name
+        case 5 : attributeOneLabel.text = translateItemAttributeName(englishName: itemData?.attributes[0].name ?? "-")
+            attributeTwoLabel.text = translateItemAttributeName(englishName: itemData?.attributes[1].name ?? "-")
+            attributeThreeLabel.text = translateItemAttributeName(englishName: itemData?.attributes[2].name ?? "-")
+            attributeFourLabel.text = translateItemAttributeName(englishName: itemData?.attributes[3].name ?? "-")
+            attributeFiveLabel.text = translateItemAttributeName(englishName: itemData?.attributes[4].name ?? "-")
     
         case .none:
             print("No Attributes")
@@ -78,32 +78,26 @@ class ItemDetailVC: UIViewController {
         costLabel.text = "\(itemData?.cost ?? 0) Pokédollar"
         
         flingPowerLabel.text = "\(itemData?.fling_power ?? 0)"
-        flingEffectLabel.text = itemData?.fling_effect ?? "-"
+        flingEffectLabel.text = translateFlingEffectName(englishName: itemData?.fling_effect?.name ?? "-")
         
         
         var indexFlavorTxt = 0
         
         for i in 0..<(itemData?.flavor_text_entries.count ?? 0) {
-            if itemData?.flavor_text_entries[i].language.name == "de"{
+            if itemData?.flavor_text_entries[i].language?.name == "de"{
                 indexFlavorTxt = i
             }
         }
         
         flavorTextLabel.text = itemData?.flavor_text_entries[indexFlavorTxt].text
-        effectLabel.text = itemData?.effect_entries[0].effect
+        
+        
+        if itemData?.effect_entries.count == 0 {
+            effectLabel.text = "-"
+        }else {
+            effectLabel.text = itemData?.effect_entries[0].effect
+        }
+        
     }
     
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

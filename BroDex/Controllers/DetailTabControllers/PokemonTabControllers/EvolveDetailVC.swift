@@ -8,27 +8,33 @@
 import UIKit
 
 class EvolveDetailVC: UIViewController {
-
+    
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var naviItems: UINavigationItem!
+    @IBOutlet weak var pokeIV: UIImageView!
+    @IBOutlet weak var bgGradientIV: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.barTintColor = UIColor.clear
-        navigationBar.backgroundColor = UIColor.clear
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.isTranslucent = true
+        
+        setTransparentNavBar(navBar: navigationBar)
+        
+        let pokemon = DataManager.shared.pokemon
+        let pokeData = DataManager.shared.pokeData
+        
+        naviItems.title = translatePokemonName(englishName: pokemon!.name)
+        naviItems.title?.append(" #\( pokeData?.id ?? 0)")
+        
+        let urlData = pokeData?.sprites.other.propertyWithHyphen.front_default
+        self.pokeIV.sd_setImage(with: URL(string: urlData ?? "https://i.ibb.co/W2bWG2Q/missingno.png"), placeholderImage: UIImage(named: "missingno"))
+        
+        setGradientBG(name: (pokeData?.types[0].type.name)!, imageView: self.bgGradientIV)
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func backBarBtn(_ sender: Any) {
+        dismiss(animated: true)
     }
-    */
-
 }
+

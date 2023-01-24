@@ -1005,3 +1005,114 @@ func translateStatsName(englishName: String) -> String {
     }
 }
 
+// MARK: FlingEffects Translator
+
+let translationTableFlingEffects: [String: String] = [
+    "badly-poison" : "Schwere Vergiftung",
+    "burn" : "Verbrennung",
+    "berry-effect" : "Beereneffekt",
+    "herb-effect" : "Kräutereffekt",
+    "paralyze" : "Paralyse",
+    "poison" : "Vergiftung",
+    "flinch" : "Zurückschrecken",
+]
+
+func translateFlingEffectName(englishName: String) -> String {
+    if let germanName = translationTableFlingEffects[englishName] {
+        return germanName
+    } else {
+        return englishName
+    }
+}
+
+
+// MARK: ItemAttribute Translator
+
+let translationTableItemAttribute: [String: String] = [
+    "countable" : "Zählbar",
+    "consumable" : "Verbrauchbar",
+    "usable-overworld" : "Nutzbar im Überland",
+    "usable-in-battle" : "Nutzbar im Kampf",
+    "holdable" : "Tragbar",
+    "holdable-passive" : "Tragbar(Passiv)",
+    "holdable-active" : "Tragbar(Aktiv)",
+    "underground" : "Unterirdisch"
+]
+
+func translateItemAttributeName(englishName: String) -> String {
+    if let germanName = translationTableItemAttribute[englishName] {
+        return germanName
+    } else {
+        return englishName
+    }
+}
+
+
+
+// MARK: Category Translator
+
+let translationTableItemCategory: [String: String] = [
+    "stat-boosts": "Stat-Boosts",
+    "effort-drop" : "Anstrengungsabfall",
+    "medicine" : "Medizin",
+    "other" :"sonstiges",
+    "in-a-pinch" : "in Notsituationen",
+    "picky-healing" : "wählerische Heilung",
+    "type-protection" : "Typenschutz",
+    "baking-only" : "nur zum Backen",
+    "collectibles" : "Sammlerstücke",
+    "evolution" : "Sammlerstücke",
+    "spelunking" : "Höhlenforschung",
+    "held-items" : "Gegenstände, die gehalten werden",
+    "choice" : "Wahl-Gegenstände",
+    "effort-training" : "Anstrengungstraining",
+    "bad-held-items" : "schlechte Gegenstände zum Halten",
+    "training" : "Training",
+    "plates" : "Platten",
+    "species-specific" : "Spezies-Spezifisch",
+    "type-enhancement" : "Typ-Verstärkung",
+    "event-items" : "Event-Gegenstände",
+    "gameplay" : "Gameplay",
+    "plot-advancement" : "Handlungsfortschritt",
+    "unused" : "unbenutzt",
+    "loot" : "Beute",
+    "all-mail" : "alle Briefe" ,
+    "vitamins" : "Vitamine",
+    "healing" : "Heilung",
+    "pp-recovery" : "AP-Erholung",
+    "revival" : "Wiederbelebung",
+    "status-cures" : "Statusheilung",
+    "mulch" : "Mulch",
+    "special-balls" : "Spezielle Bälle",
+    "standard-balls" : "Standard-Bälle",
+    "dex-completion" : "Dex-Vervollständigung",
+    "scarves" : "Schals",
+    "all-machines" : "alle Maschinen",
+    "flutes" : "Flöten",
+    "apricorn-balls" : "Apricorn-Bälle",
+    "apricorn-box" : "Apricorn-Box",
+    "data-cards" : "Datenkarten",
+    "jewels" : "Juwelen",
+    "miracle-shooter" : "Wunder-Schütze",
+    "mega-stones" : "Mega-Steine",
+    "memories" : "Erinnerungen",
+    "z-crystals" : "Z-Kristalle",
+    "species-candies" : "Arten-Süßigkeiten",
+    "catching-bonus" : "Fangbonus",
+    "dynamax-crystals" : "Dynamax-Kristalle",
+    "nature-mints" : "Nature-Minze",
+    "curry-ingredients" : "Curry-Zutaten",
+    "tera-shard" : "Tera-Scherben",
+    "sandwich-ingredients" : "Sandwich-Zutaten",
+    "tm-materials" : "TM-Materialien",
+    "picnic" : "Picknick"
+]
+
+func translateItemCategoryName(englishName: String) -> String {
+    if let germanName = translationTableItemCategory[englishName] {
+        return germanName
+    } else {
+        return englishName
+    }
+}
+

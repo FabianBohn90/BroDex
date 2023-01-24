@@ -139,9 +139,9 @@ extension ItemDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
             self.itemData = result
 
             DispatchQueue.main.async {
-                let urlData = self.itemData?.sprites.default
+                let urlData = self.itemData?.sprites.default ?? "https://i.ibb.co/W2bWG2Q/missingno.png"
 
-                cell.itemIV.sd_setImage(with: URL(string: urlData ?? "error"), placeholderImage: UIImage(named: "splash screen"))
+                cell.itemIV.sd_setImage(with: URL(string: urlData ), placeholderImage: UIImage(named: "splash screen"))
             }
         }
         return cell

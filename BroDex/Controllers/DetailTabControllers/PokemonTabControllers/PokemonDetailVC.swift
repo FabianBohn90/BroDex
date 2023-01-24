@@ -45,15 +45,11 @@ class PokemonDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationBar.barTintColor = UIColor.clear
-        navigationBar.backgroundColor = UIColor.clear
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.isTranslucent = true
+        setTransparentNavBar(navBar: navigationBar)
         
         fetchPokemon(URL: pokemon?.url ?? "error"){result in
             self.pokeData = result
-            
+            DataManager.shared.pokeData = self.pokeData
             DispatchQueue.main.async {
                 self.nameLabel.text = translatePokemonName(englishName: self.pokeData!.name)
                 self.nameLabel.text?.append(" #\( self.pokeData?.id ?? 0)")
@@ -87,30 +83,8 @@ class PokemonDetailVC: UIViewController {
                 self.heightLabel.text = "Höhe \(Double(self.pokeData!.height) / 10) m"
                 self.weightLabel.text = "Gewicht \(Double(self.pokeData!.weight) / 10) kg"
                 
-                switch self.pokeData?.types[0].type.name {
-                case "fire" : self.bgGradientIV.image = UIImage(named: "Fire Gradient")
-                case "grass" : self.bgGradientIV.image = UIImage(named: "Plant Gradient")
-                case "water" : self.bgGradientIV.image = UIImage(named: "Water Gradient")
-                case "steel" : self.bgGradientIV.image = UIImage(named: "Steele Gradient")
-                case "ice" : self.bgGradientIV.image = UIImage(named: "Ice Gradient")
-                case "flying" : self.bgGradientIV.image = UIImage(named: "Flying Gradient")
-                case "poison" : self.bgGradientIV.image = UIImage(named: "Poison Gradient")
-                case "ground" : self.bgGradientIV.image = UIImage(named: "Ground Gradient")
-                case "bug" : self.bgGradientIV.image = UIImage(named: "Bug Gradient")
-                case "ghost" : self.bgGradientIV.image = UIImage(named: "Ghost Gradient")
-                case "normal" : self.bgGradientIV.image = UIImage(named: "Normal Gradient")
-                case "fairy" : self.bgGradientIV.image = UIImage(named: "Fairy Gradient")
-                case "fighting" : self.bgGradientIV.image = UIImage(named: "Fighting Gradient")
-                case "electric" : self.bgGradientIV.image = UIImage(named: "Electro Gradient")
-                case "dragon" : self.bgGradientIV.image = UIImage(named: "Dragon Gradient")
-                case "rock" : self.bgGradientIV.image = UIImage(named: "Rock Gradient")
-                case "psychic" : self.bgGradientIV.image = UIImage(named: "Psycho Gradient")
-                case "dark" : self.bgGradientIV.image = UIImage(named: "Dark Gradient")
-                case .none:
-                    return
-                case .some(_):
-                    return
-                }
+                setGradientBG(name: self.pokeData?.types[0].type.name ?? "-", imageView: self.bgGradientIV)
+                
                 
                 if self.pokeData?.types.count == 1 {
                     self.typeOneLabel.text = translateTypeName(englishName: (self.pokeData?.types[0].type.name)!)
