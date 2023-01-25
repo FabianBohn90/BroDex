@@ -14,19 +14,24 @@ class PokemonDetailVC: UIViewController {
     var pokemon: Results?
     var pokeData: Pokemon?
     var abilitiesData: Abilities?
-
+    
     
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var naviItems: UINavigationItem!
     @IBOutlet weak var pokeIV: UIImageView!
     @IBOutlet weak var bgGradientIV: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    
     @IBOutlet weak var typeOneLabel: UILabel!
     @IBOutlet weak var typeTwoLabel: UILabel!
+    
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
+    
     @IBOutlet weak var abilitieOneBtn: UIButton!
     @IBOutlet weak var abilitieTwoBtn: UIButton!
+    @IBOutlet weak var abilitieThreeBtn: UIButton!
+    
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var hpNameLabel: UILabel!
     @IBOutlet weak var hpStatLabel: UILabel!
@@ -40,7 +45,7 @@ class PokemonDetailVC: UIViewController {
     @IBOutlet weak var specialDefStatLabel: UILabel!
     @IBOutlet weak var speedNameLabel: UILabel!
     @IBOutlet weak var speedStatLabel: UILabel!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +62,7 @@ class PokemonDetailVC: UIViewController {
                 self.naviItems.title = translatePokemonName(englishName: self.pokeData!.name)
                 self.naviItems.title?.append(" #\( self.pokeData?.id ?? 0)")
                 
-                 let urlData = self.pokeData?.sprites.other.propertyWithHyphen.front_default
+                let urlData = self.pokeData?.sprites.other.propertyWithHyphen.front_default
                 self.pokeIV.sd_setImage(with: URL(string: urlData ?? "https://i.ibb.co/W2bWG2Q/missingno.png"), placeholderImage: UIImage(named: "missingno"))
                 
                 
@@ -95,33 +100,62 @@ class PokemonDetailVC: UIViewController {
                     self.typeTwoLabel.text = translateTypeName(englishName: (self.pokeData?.types[1].type.name)!)
                 }
                 
-                if self.pokeData?.abilities.count == 1 {
-                    fetchAbilities(URL: (self.pokeData?.abilities[0].ability.url)!){result in
+                
+                switch self.pokeData?.abilities.count {
+                case 1 : fetchAbilities(URL: (self.pokeData?.abilities[0].ability.url)!){result in
                     self.abilitiesData = result
-                        
-                        DispatchQueue.main.async {
-                            self.abilitieOneBtn.setTitle(self.abilitiesData?.names[4].name ?? self.abilitiesData?.name , for: .normal)
-                            self.abilitieTwoBtn.isHidden = true
-                        }
+                    
+                    DispatchQueue.main.async {
+                        self.abilitieOneBtn.setTitle(self.abilitiesData?.names[4].name ?? self.abilitiesData?.name , for: .normal)
+                        self.abilitieTwoBtn.isHidden = true
+                    }
                 }
                     self.abilitieOneBtn.setTitle(self.abilitiesData?.names[4].name ?? self.abilitiesData?.name , for: .normal)
                     self.abilitieTwoBtn.isHidden = true
-                } else {
-                    fetchAbilities(URL: (self.pokeData?.abilities[0].ability.url)!){result in
+                    self.abilitieThreeBtn.isHidden = true
+                    
+                case 2 : fetchAbilities(URL: (self.pokeData?.abilities[0].ability.url)!){result in
                     self.abilitiesData = result
-                        DispatchQueue.main.async {
-                            self.abilitieOneBtn.setTitle(self.abilitiesData?.names[4].name ?? self.abilitiesData?.name, for: .normal)
-                        }
+                    DispatchQueue.main.async {
+                        self.abilitieOneBtn.setTitle(self.abilitiesData?.names[4].name ?? self.abilitiesData?.name, for: .normal)
+                    }
                 }
                     fetchAbilities(URL: (self.pokeData?.abilities[1].ability.url)!){result in
-                    self.abilitiesData = result
+                        self.abilitiesData = result
                         DispatchQueue.main.async {
                             self.abilitieTwoBtn.setTitle(self.abilitiesData?.names[4].name ?? self.abilitiesData?.name, for: .normal)
                         }
+                    }
+                    self.abilitieThreeBtn.isHidden = true
+                    
+                case 3 : fetchAbilities(URL: (self.pokeData?.abilities[0].ability.url)!){result in
+                    self.abilitiesData = result
+                    DispatchQueue.main.async {
+                        self.abilitieOneBtn.setTitle(self.abilitiesData?.names[4].name ?? self.abilitiesData?.name, for: .normal)
+                    }
+                }
+                    fetchAbilities(URL: (self.pokeData?.abilities[1].ability.url)!){result in
+                        self.abilitiesData = result
+                        DispatchQueue.main.async {
+                            self.abilitieTwoBtn.setTitle(self.abilitiesData?.names[4].name ?? self.abilitiesData?.name, for: .normal)
+                        }
+                    }
+                    fetchAbilities(URL: (self.pokeData?.abilities[2].ability.url)!){result in
+                        self.abilitiesData = result
+                        DispatchQueue.main.async {
+                            self.abilitieThreeBtn.setTitle(self.abilitiesData?.names[4].name ?? self.abilitiesData?.name, for: .normal)
+                        }
+                    }
+                    
+                case .none:
+                    self.abilitieOneBtn.isHidden = true
+                    self.abilitieTwoBtn.isHidden = true
+                    self.abilitieThreeBtn.isHidden = true
+                case .some(_):
+                    return
                 }
             }
         }
-    }
         
         
     }

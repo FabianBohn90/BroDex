@@ -15,6 +15,7 @@ struct Pokemon: Decodable {
     let location_area_encounters: String
     let moves: [moves]
     let name: String
+    let species: species
     let sprites: pokeSprites
     let stats: [stats]
     let types: [types]
@@ -49,6 +50,11 @@ struct version_group_details: Decodable {
 }
 
 struct version_group: Decodable {
+    let name: String
+    let url: String
+}
+
+struct species: Decodable {
     let name: String
     let url: String
 }

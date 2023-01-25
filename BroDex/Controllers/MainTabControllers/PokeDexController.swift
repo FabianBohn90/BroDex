@@ -100,13 +100,10 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
         
     }
     
-
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "pokeCell", for: indexPath) as? PokeTVCell else {
             fatalError("Unexpected cell class dequeued")
         }
-        
         
         var urlData = (germanData?.results[indexPath.row].url)!
         var pokeNameData = (germanData?.results[indexPath.row].name)!
@@ -183,12 +180,9 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
         var pokemon = germanData?.results[indexPath.row]
         if isSearching == true { pokemon = filteredData?[indexPath.row] }
         
-        let pokemonTuple = pokemon
-        
         DataManager.shared.pokemon = pokemon
         
-        
-        performSegue(withIdentifier: "toPokemonDetail", sender: pokemonTuple)
+        performSegue(withIdentifier: "toPokemonDetail", sender: pokemon)
         
         return indexPath
     }
@@ -199,7 +193,6 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
                 guard let destinationVC = segue.destination as? TabBarController else { return }
                 guard let PokemonTuple = sender as? (Results) else  { return }
                 
-
                 destinationVC.pokemon = PokemonTuple
                 
             }

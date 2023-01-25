@@ -843,7 +843,7 @@ let translationTable: [String: String] = [
     "zeraora":"Zeraora",
     "meltan":"Meltan",
     "melmetal":"Melmetal",
-
+    
     //-----------------------------------------------------
     // MARK: 8. Generation
     
@@ -943,7 +943,7 @@ let translationTable: [String: String] = [
     "sneasler" : "Snieboss" ,
     "overqwil" : "Myriador" ,
     "enamorus-incarnate" : "Cupidos" ,
-
+    
 ]
 
 func translatePokemonName(englishName: String) -> String {

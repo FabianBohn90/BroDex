@@ -14,6 +14,7 @@ class AttackDetailVC: UIViewController {
     @IBOutlet weak var naviItems: UINavigationItem!
     @IBOutlet weak var bgGradientIV: UIImageView!
     
+    
     var pokemon: Results?
     var pokeData: Pokemon?
     var moveData: Move?
@@ -27,6 +28,8 @@ class AttackDetailVC: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.backgroundColor = UIColor.init(white: 1, alpha: 0)
         
         setTransparentNavBar(navBar: navigationBar)
         
@@ -45,7 +48,7 @@ class AttackDetailVC: UIViewController {
 extension AttackDetailVC : UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 107
+        return 120
         
     }
     
@@ -58,9 +61,11 @@ extension AttackDetailVC : UITableViewDataSource, UITableViewDelegate, UIScrollV
             fatalError("Unexpected cell class dequeued")
         }
         
-        cell.moveNameLabel.text = pokeData?.moves[indexPath.row].move.name
+        cell.bgView.layer.cornerRadius = 10
         
-        cell.contentView.layer.cornerRadius = 20
+        cell.moveNameLabel.text = pokeData?.moves[indexPath.row].move.name
+        cell.backgroundColor = .clear
+        
         
         fetchMove(URL: pokeData?.moves[indexPath.row].move.url ?? "-"){result in
             self.moveData = result
@@ -69,10 +74,16 @@ extension AttackDetailVC : UITableViewDataSource, UITableViewDelegate, UIScrollV
                 cell.moveGenLabel.text = "\(self.moveData?.accuracy ?? 0)"
                 cell.moveApLabel.text = "\(self.moveData?.pp ?? 0)"
                 cell.movePowerLabel.text = "\(self.moveData?.power ?? 0)"
-                cell.moveTypeLabel.text = self.moveData?.type.name
+                cell.movePrioLabel.text = "\(self.moveData?.priority ?? 0)"
+                cell.moveTypeLabel.text = translateTypeName(englishName: self.moveData?.type.name ?? "-")
+                cell.moveDmgClassLabel.text = self.moveData?.damage_class.name
+                cell.moveTargetLabel.text = self.moveData?.target.name
+//                cell.moveTmLabel.text = self.moveData?.machines[0].machine.url
+                if (self.moveData?.names.count)! > 4{
                 cell.moveNameLabel.text = self.moveData?.names[4].name
-                
-                
+                } else {
+                    cell.moveNameLabel.text = self.moveData?.name
+                }
             }
         }
         

@@ -27,7 +27,6 @@ class ItemDetailVC: UIViewController {
     @IBOutlet weak var flingPowerLabel: UILabel!
     @IBOutlet weak var flingEffectLabel: UILabel!
     
-    
     @IBOutlet weak var flavorTextLabel: UILabel!
     @IBOutlet weak var effectLabel: UILabel!
     
@@ -97,7 +96,5 @@ class ItemDetailVC: UIViewController {
         }else {
             effectLabel.text = itemData?.effect_entries[0].effect
         }
-        
     }
-    
 }

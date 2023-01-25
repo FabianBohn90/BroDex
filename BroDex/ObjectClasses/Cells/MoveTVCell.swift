@@ -22,11 +22,12 @@ class MoveTVCell: UITableViewCell {
     @IBOutlet weak var moveTargetLabel: UILabel!
     @IBOutlet weak var moveTmLabel: UILabel!
     
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet weak var bgView: UIView!
+    
+    //    override func awakeFromNib() {
+    //        super.awakeFromNib()
+    //        // Initialization code
+    //    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -41,12 +42,12 @@ class MoveTVCell: UITableViewCell {
             )
         )
     }
-      
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    
+    
+    //    override func setSelected(_ selected: Bool, animated: Bool) {
+    //        super.setSelected(selected, animated: animated)
+    //
+    //        // Configure the view for the selected state
+    //    }
+    
 }

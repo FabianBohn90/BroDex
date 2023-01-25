@@ -85,3 +85,33 @@ func fetchMove( URL Url:String, completion: @escaping (Move) -> Void) {
         }
         dataTask.resume ()
 }
+
+func fetchPokemonSpecies( URL Url:String, completion: @escaping (PokemonSpecies) -> Void) {
+   
+        let url = URL(string: Url)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: url!) { data, response, error in
+            do {
+                let fetchingData = try JSONDecoder().decode (PokemonSpecies.self, from: data!)
+                completion(fetchingData)
+            }catch {
+                print("ERROR: \(error)")
+            }
+        }
+        dataTask.resume ()
+}
+
+func fetchEvolutionChain( URL Url:String, completion: @escaping (EvolutionChain) -> Void) {
+   
+        let url = URL(string: Url)
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: url!) { data, response, error in
+            do {
+                let fetchingData = try JSONDecoder().decode (EvolutionChain.self, from: data!)
+                completion(fetchingData)
+            }catch {
+                print("ERROR: \(error)")
+            }
+        }
+        dataTask.resume ()
+}
