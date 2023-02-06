@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ItemDetailVC: UIViewController {
     
@@ -34,8 +35,28 @@ class ItemDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let urlData = itemData?.sprites.default
-        itemImageView.sd_setImage(with: URL(string: urlData ?? "https://i.ibb.co/W2bWG2Q/missingno.png"), placeholderImage: UIImage(named: "splash screen"))
+        
+        
+        let urlData = URL(string:itemData?.sprites.default ?? "https://i.ibb.co/W2bWG2Q/missingno.png")
+        let processor = DownsamplingImageProcessor(size: itemImageView.bounds.size)
+        itemImageView.kf.setImage(
+            with: urlData,
+            placeholder: UIImage(named: "splash screen"),
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(0.8)),
+                .cacheOriginalImage
+            ])
+        {
+                result in
+                switch result {
+                case .success(let value):
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
+                }
+            }
         
         if (self.itemData?.names.count)! > 4{
             itemNameLabel.text = itemData?.names[4].name

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ItemDexController: UIViewController, UISearchBarDelegate {
     
@@ -29,9 +30,6 @@ class ItemDexController: UIViewController, UISearchBarDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tap)
         tap.cancelsTouchesInView = false
-        
-  
-        
         
         fetchData(URL: url) {result in
 
@@ -100,13 +98,6 @@ class ItemDexController: UIViewController, UISearchBarDelegate {
 extension ItemDexController: UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return data?.results.count ?? 0
-        
-//        if isSearching == false{
-//            return data?.results.count ?? 0
-//        } else {
-//            return filteredData?.count ?? 0
-//        }
         
         if isSearching == false{
             return germanData?.results.count ?? 0
@@ -139,9 +130,26 @@ extension ItemDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
             self.itemData = result
 
             DispatchQueue.main.async {
-                let urlData = self.itemData?.sprites.default ?? "https://i.ibb.co/W2bWG2Q/missingno.png"
-
-                cell.itemIV.sd_setImage(with: URL(string: urlData ), placeholderImage: UIImage(named: "splash screen"))
+                let urlData = URL(string:self.itemData?.sprites.default ?? "https://i.ibb.co/W2bWG2Q/missingno.png")
+                let processor = DownsamplingImageProcessor(size: cell.itemIV.bounds.size)
+                cell.itemIV.kf.setImage(
+                    with: urlData,
+                    placeholder: UIImage(named: "splash screen"),
+                    options: [
+                        .processor(processor),
+                        .scaleFactor(UIScreen.main.scale),
+                        .transition(.fade(0.8)),
+                        .cacheOriginalImage
+                    ])
+                {
+                        result in
+                        switch result {
+                        case .success(let value):
+                            print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                        case .failure(let error):
+                            print("Job failed: \(error.localizedDescription)")
+                        }
+                    }
             }
         }
         return cell

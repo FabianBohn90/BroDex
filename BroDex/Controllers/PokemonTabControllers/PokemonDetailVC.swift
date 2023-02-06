@@ -6,7 +6,8 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
+
 
 class PokemonDetailVC: UIViewController {
     
@@ -52,6 +53,9 @@ class PokemonDetailVC: UIViewController {
         
         setTransparentNavBar(navBar: navigationBar)
         
+        navigationBar.barStyle = .default
+
+        
         fetchPokemon(URL: pokemon?.url ?? "error"){result in
             self.pokeData = result
             DataManager.shared.pokeData = self.pokeData
@@ -62,8 +66,26 @@ class PokemonDetailVC: UIViewController {
                 self.naviItems.title = translatePokemonName(englishName: self.pokeData!.name)
                 self.naviItems.title?.append(" #\( self.pokeData?.id ?? 0)")
                 
-                let urlData = self.pokeData?.sprites.other.propertyWithHyphen.front_default
-                self.pokeIV.sd_setImage(with: URL(string: urlData ?? "https://i.ibb.co/W2bWG2Q/missingno.png"), placeholderImage: UIImage(named: "missingno"))
+                let urlData = URL(string:self.pokeData?.sprites.other.propertyWithHyphen.front_default ?? "https://i.ibb.co/W2bWG2Q/missingno.png")
+                let processor = DownsamplingImageProcessor(size: self.pokeIV.bounds.size)
+                self.pokeIV.kf.setImage(
+                    with: urlData,
+                    placeholder: UIImage(named: "splash screen"),
+                    options: [
+                        .processor(processor),
+                        .scaleFactor(UIScreen.main.scale),
+                        .transition(.fade(0.8)),
+                        .cacheOriginalImage
+                    ])
+                {
+                        result in
+                        switch result {
+                        case .success(let value):
+                            print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                        case .failure(let error):
+                            print("Job failed: \(error.localizedDescription)")
+                        }
+                    }
                 
                 
                 self.hpNameLabel.text = translateStatsName(englishName: (self.pokeData?.stats[0].stat.name)!)

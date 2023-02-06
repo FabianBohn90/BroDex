@@ -23,6 +23,8 @@ class AttackDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationBar.barStyle = .default
+        
         pokemon = DataManager.shared.pokemon
         pokeData = DataManager.shared.pokeData
         

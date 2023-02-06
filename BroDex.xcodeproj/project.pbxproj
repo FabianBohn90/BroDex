@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		890F7E59299148F00062FE84 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890F7E58299148F00062FE84 /* Types.swift */; };
 		892BE20C296F0C2600A3F64E /* RoundedCornersLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892BE20B296F0C2600A3F64E /* RoundedCornersLabel.swift */; };
 		892E892D296D82C9004FE34F /* Abilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892E892C296D82C9004FE34F /* Abilities.swift */; };
 		8940F2372962DB9600AC4EEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F2362962DB9600AC4EEB /* AppDelegate.swift */; };
@@ -18,12 +19,11 @@
 		8940F2462962DB9800AC4EEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8940F2442962DB9800AC4EEB /* LaunchScreen.storyboard */; };
 		8940F24E2962F58200AC4EEB /* ItemDexController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F24D2962F58200AC4EEB /* ItemDexController.swift */; };
 		8940F2502962F5A800AC4EEB /* TypeDexController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F24F2962F5A800AC4EEB /* TypeDexController.swift */; };
-		8940F2522962F5C700AC4EEB /* DmgCalcController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F2512962F5C700AC4EEB /* DmgCalcController.swift */; };
 		8940F2572962F96100AC4EEB /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F2562962F96100AC4EEB /* List.swift */; };
 		8940F259296302DC00AC4EEB /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F258296302DC00AC4EEB /* FetchData.swift */; };
-		8940F25C2963081F00AC4EEB /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8940F25B2963081F00AC4EEB /* SDWebImage */; };
 		8940F25E29630C9D00AC4EEB /* PokeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F25D29630C9D00AC4EEB /* PokeTVCell.swift */; };
 		8940F261296312B900AC4EEB /* ItemTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F260296312B900AC4EEB /* ItemTVCell.swift */; };
+		8953F9A82982791900FA96A5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8953F9A72982791900FA96A5 /* Kingfisher */; };
 		895D4F13297EC5FF00575A55 /* ItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895D4F12297EC5FF00575A55 /* ItemDetailVC.swift */; };
 		8986B8D7297FF1F6003E367A /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986B8D6297FF1F6003E367A /* Move.swift */; };
 		8986B8D9298008C8003E367A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986B8D8298008C8003E367A /* DataManager.swift */; };
@@ -41,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		890F7E58299148F00062FE84 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		892BE20B296F0C2600A3F64E /* RoundedCornersLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersLabel.swift; sourceTree = "<group>"; };
 		892E892C296D82C9004FE34F /* Abilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Abilities.swift; sourceTree = "<group>"; };
 		8940F2332962DB9600AC4EEB /* BroDex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BroDex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,7 +55,6 @@
 		8940F2472962DB9800AC4EEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8940F24D2962F58200AC4EEB /* ItemDexController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDexController.swift; sourceTree = "<group>"; };
 		8940F24F2962F5A800AC4EEB /* TypeDexController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDexController.swift; sourceTree = "<group>"; };
-		8940F2512962F5C700AC4EEB /* DmgCalcController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DmgCalcController.swift; sourceTree = "<group>"; };
 		8940F2562962F96100AC4EEB /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		8940F258296302DC00AC4EEB /* FetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
 		8940F25D29630C9D00AC4EEB /* PokeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeTVCell.swift; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8940F25C2963081F00AC4EEB /* SDWebImage in Frameworks */,
+				8953F9A82982791900FA96A5 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,9 +108,7 @@
 			children = (
 				8940F2362962DB9600AC4EEB /* AppDelegate.swift */,
 				8940F2382962DB9600AC4EEB /* SceneDelegate.swift */,
-				8986B8D8298008C8003E367A /* DataManager.swift */,
-				8986B8DF29814EDB003E367A /* CustomFunc */,
-				8986B8DE29814D21003E367A /* ObjectClasses */,
+				8986B8DF29814EDB003E367A /* Utilitys */,
 				89DF00BA2964755F0058B329 /* ApiCalls */,
 				8940F2552962F64F00AC4EEB /* Models */,
 				8940F2532962F60500AC4EEB /* Controllers */,
@@ -125,6 +123,7 @@
 		8940F2532962F60500AC4EEB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8986B8DE29814D21003E367A /* ObjectClasses */,
 				89893AB42966DADB0008B013 /* MainTabControllers */,
 				895D4F14297EE05E00575A55 /* PokemonTabControllers */,
 				89A355332979527A004A1F49 /* DetailTabControllers */,
@@ -151,6 +150,7 @@
 				89C8F57B296B206D00A6F5DD /* Item.swift */,
 				892E892C296D82C9004FE34F /* Abilities.swift */,
 				8986B8D6297FF1F6003E367A /* Move.swift */,
+				890F7E58299148F00062FE84 /* Types.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,13 +185,14 @@
 			path = ObjectClasses;
 			sourceTree = "<group>";
 		};
-		8986B8DF29814EDB003E367A /* CustomFunc */ = {
+		8986B8DF29814EDB003E367A /* Utilitys */ = {
 			isa = PBXGroup;
 			children = (
+				8986B8D8298008C8003E367A /* DataManager.swift */,
 				89C8F579296A74D000A6F5DD /* Translator.swift */,
 				8986B8DA29801949003E367A /* GlobalFunc.swift */,
 			);
-			path = CustomFunc;
+			path = Utilitys;
 			sourceTree = "<group>";
 		};
 		89893AB42966DADB0008B013 /* MainTabControllers */ = {
@@ -200,7 +201,6 @@
 				8940F23A2962DB9600AC4EEB /* PokeDexController.swift */,
 				8940F24D2962F58200AC4EEB /* ItemDexController.swift */,
 				8940F24F2962F5A800AC4EEB /* TypeDexController.swift */,
-				8940F2512962F5C700AC4EEB /* DmgCalcController.swift */,
 			);
 			path = MainTabControllers;
 			sourceTree = "<group>";
@@ -238,7 +238,7 @@
 			);
 			name = BroDex;
 			packageProductDependencies = (
-				8940F25B2963081F00AC4EEB /* SDWebImage */,
+				8953F9A72982791900FA96A5 /* Kingfisher */,
 			);
 			productName = BroDex;
 			productReference = 8940F2332962DB9600AC4EEB /* BroDex.app */;
@@ -269,7 +269,7 @@
 			);
 			mainGroup = 8940F22A2962DB9600AC4EEB;
 			packageReferences = (
-				8940F25A2963081F00AC4EEB /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				8953F9A62982791900FA96A5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 8940F2342962DB9600AC4EEB /* Products */;
 			projectDirPath = "";
@@ -320,11 +320,11 @@
 				89893AB62966E16C0008B013 /* PokemonDetailVC.swift in Sources */,
 				8986B8DB29801949003E367A /* GlobalFunc.swift in Sources */,
 				8940F2392962DB9600AC4EEB /* SceneDelegate.swift in Sources */,
-				8940F2522962F5C700AC4EEB /* DmgCalcController.swift in Sources */,
 				8940F2412962DB9600AC4EEB /* BroDex.xcdatamodeld in Sources */,
 				8940F259296302DC00AC4EEB /* FetchData.swift in Sources */,
 				8940F2502962F5A800AC4EEB /* TypeDexController.swift in Sources */,
 				89C8F57A296A74D000A6F5DD /* Translator.swift in Sources */,
+				890F7E59299148F00062FE84 /* Types.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,21 +544,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8940F25A2963081F00AC4EEB /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+		8953F9A62982791900FA96A5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8940F25B2963081F00AC4EEB /* SDWebImage */ = {
+		8953F9A72982791900FA96A5 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8940F25A2963081F00AC4EEB /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
+			package = 8953F9A62982791900FA96A5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 

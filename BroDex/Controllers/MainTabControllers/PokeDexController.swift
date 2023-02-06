@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 class PokeDexController: UIViewController, UISearchBarDelegate {
     
@@ -21,19 +21,7 @@ class PokeDexController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pokeSearchBar: UISearchBar!
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        pokeSearchBar.delegate = self
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        view.addGestureRecognizer(tap)
-        tap.cancelsTouchesInView = false
-
-    
+    override func viewWillAppear(_ animated: Bool) {
         fetchData(URL: url) {result in
             
             switch result{
@@ -51,6 +39,22 @@ class PokeDexController: UIViewController, UISearchBarDelegate {
                 break
             }
         }
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        pokeSearchBar.delegate = self
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+
+    
+        
     }
     
     @objc func hideKeyboard() {
@@ -121,8 +125,29 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
             self.pokeData = result
             
             DispatchQueue.main.async {
-                let urlData = self.pokeData?.sprites.other.propertyWithHyphen.front_default
-                cell.pokeIV.sd_setImage(with: URL(string: urlData ?? "https://i.ibb.co/W2bWG2Q/missingno.png"), placeholderImage: UIImage(named: "missingno"))
+                let urlData = URL(string: self.pokeData?.sprites.other.propertyWithHyphen.front_default ?? "https://i.ibb.co/W2bWG2Q/missingno.png")
+
+                let processor = DownsamplingImageProcessor(size: cell.pokeIV.bounds.size)
+
+                cell.pokeIV.kf.indicatorType = .activity
+                cell.pokeIV.kf.setImage(
+                    with: urlData,
+                    placeholder: UIImage(named: "splash screen"),
+                    options: [
+                        .processor(processor),
+                        .scaleFactor(UIScreen.main.scale),
+                        .transition(.fade(0.8)),
+                        .cacheOriginalImage
+                    ])
+                {
+                        result in
+                        switch result {
+                        case .success(let value):
+                            print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                        case .failure(let error):
+                            print("Job failed: \(error.localizedDescription)")
+                        }
+                    }
                 
                 cell.pokeNumberLB.text = "#\(self.pokeData?.id ?? 0)"
                 
@@ -132,14 +157,17 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
                         englishName: self.pokeData?.types[0].type.name ?? "error")
                     cell.pokeType2LB.isHidden = true
                     
-                }else {
+                }
+                
+                if self.pokeData?.types.count == 2 && self.pokeData?.types[1].type.name != nil  {
                     cell.pokeType1LB.text = translateTypeName(
                         englishName: self.pokeData?.types[0].type.name ?? "error")
                     cell.pokeType2LB.isHidden = false
                     cell.pokeType2LB.text = translateTypeName(
                         englishName: self.pokeData?.types[1].type.name ?? "error")
-                    
                 }
+                
+                if self.pokeData?.types.count == 0 {print("Error no types Found")}
                 
                 let pokeType = self.pokeData?.types[0].type.name
                 

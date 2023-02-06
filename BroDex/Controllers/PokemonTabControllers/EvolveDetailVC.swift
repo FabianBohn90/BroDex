@@ -37,6 +37,8 @@ class EvolveDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationBar.barStyle = .default
+        
         let pokemon = DataManager.shared.pokemon
         let pokeData = DataManager.shared.pokeData
         
