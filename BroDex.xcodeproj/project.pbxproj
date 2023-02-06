@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		890F7E59299148F00062FE84 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890F7E58299148F00062FE84 /* Types.swift */; };
+		890F7E5B299174E10062FE84 /* TypeSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890F7E5A299174E10062FE84 /* TypeSelectVC.swift */; };
 		892BE20C296F0C2600A3F64E /* RoundedCornersLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892BE20B296F0C2600A3F64E /* RoundedCornersLabel.swift */; };
 		892E892D296D82C9004FE34F /* Abilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892E892C296D82C9004FE34F /* Abilities.swift */; };
 		8940F2372962DB9600AC4EEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940F2362962DB9600AC4EEB /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		890F7E58299148F00062FE84 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		890F7E5A299174E10062FE84 /* TypeSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSelectVC.swift; sourceTree = "<group>"; };
 		892BE20B296F0C2600A3F64E /* RoundedCornersLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersLabel.swift; sourceTree = "<group>"; };
 		892E892C296D82C9004FE34F /* Abilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Abilities.swift; sourceTree = "<group>"; };
 		8940F2332962DB9600AC4EEB /* BroDex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BroDex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				895D4F12297EC5FF00575A55 /* ItemDetailVC.swift */,
+				890F7E5A299174E10062FE84 /* TypeSelectVC.swift */,
 			);
 			path = DetailTabControllers;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				892E892D296D82C9004FE34F /* Abilities.swift in Sources */,
 				8940F23B2962DB9600AC4EEB /* PokeDexController.swift in Sources */,
 				89C8F57C296B206E00A6F5DD /* Item.swift in Sources */,
+				890F7E5B299174E10062FE84 /* TypeSelectVC.swift in Sources */,
 				89EC3735297A9EC200D405C8 /* TabBarController.swift in Sources */,
 				8986B8DD298031DC003E367A /* MoveTVCell.swift in Sources */,
 				8986B8D9298008C8003E367A /* DataManager.swift in Sources */,

@@ -42,3 +42,30 @@ func setTransparentNavBar(navBar : UINavigationBar) {
     navBar.shadowImage = UIImage()
     navBar.isTranslucent = true
 }
+
+
+func setBgLabel(label: UILabel, typeName: String){
+    switch typeName{
+    case "fire":      label.backgroundColor = #colorLiteral(red: 0.816, green: 0.255, blue: 0.153, alpha: 1.0)
+    case "grass":     label.backgroundColor = #colorLiteral(red: 0.376, green: 0.694, blue: 0.22, alpha: 1.0)
+    case "water":     label.backgroundColor = #colorLiteral(red: 0.125, green: 0.51, blue: 0.898, alpha: 1.0)
+    case "steel":     label.backgroundColor = #colorLiteral(red: 0.525, green: 0.522, blue: 0.667, alpha: 1.0)
+    case "bug":       label.backgroundColor = #colorLiteral(red: 0.616, green: 0.663, blue: 0.078, alpha: 1.0)
+    case "flying":    label.backgroundColor = #colorLiteral(red: 0.439, green: 0.518, blue: 0.855, alpha: 1.0)
+    case "normal":    label.backgroundColor = #colorLiteral(red: 0.545, green: 0.478, blue: 0.373, alpha: 1.0)
+    case "poison":    label.backgroundColor = #colorLiteral(red: 0.569, green: 0.231, blue: 0.51, alpha: 1.0)
+    case "electric":  label.backgroundColor = #colorLiteral(red: 0.867, green: 0.643, blue: 0.047, alpha: 1.0)
+    case "ground":    label.backgroundColor = #colorLiteral(red: 0.694, green: 0.557, blue: 0.157, alpha: 1.0)
+    case "fairy":     label.backgroundColor = #colorLiteral(red: 0.839, green: 0.529, blue: 0.839, alpha: 1.0)
+    case "fighting":  label.backgroundColor = #colorLiteral(red: 0.498, green: 0.2, blue: 0.11, alpha: 1.0)
+    case "psychic":   label.backgroundColor = #colorLiteral(red: 0.812, green: 0.247, blue: 0.447, alpha: 1.0)
+    case "rock":      label.backgroundColor = #colorLiteral(red: 0.627, green: 0.525, blue: 0.192, alpha: 1.0)
+    case "ghost":     label.backgroundColor = #colorLiteral(red: 0.247, green: 0.247, blue: 0.584, alpha: 1.0)
+    case "ice":       label.backgroundColor = #colorLiteral(red: 0.129, green: 0.659, blue: 0.776, alpha: 1.0)
+    case "dragon":    label.backgroundColor = #colorLiteral(red: 0.388, green: 0.278, blue: 0.824, alpha: 1.0)
+    case "dark":      label.backgroundColor = #colorLiteral(red: 0.325, green: 0.247, blue: 0.204, alpha: 1.0)
+        
+    default:
+        return
+    }
+}

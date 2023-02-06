@@ -136,7 +136,7 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
                     options: [
                         .processor(processor),
                         .scaleFactor(UIScreen.main.scale),
-                        .transition(.fade(0.8)),
+                        .transition(.fade(0.2)),
                         .cacheOriginalImage
                     ])
                 {
@@ -163,8 +163,8 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
                     cell.pokeType1LB.text = translateTypeName(
                         englishName: self.pokeData?.types[0].type.name ?? "error")
                     cell.pokeType2LB.isHidden = false
-                    cell.pokeType2LB.text = translateTypeName(
-                        englishName: self.pokeData?.types[1].type.name ?? "error")
+//                    cell.pokeType2LB.text = translateTypeName(
+//                        englishName: self.pokeData?.types[1].type.name ?? "error")
                 }
                 
                 if self.pokeData?.types.count == 0 {print("Error no types Found")}

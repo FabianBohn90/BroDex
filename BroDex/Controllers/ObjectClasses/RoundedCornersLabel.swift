@@ -9,7 +9,7 @@ import UIKit
 class RoundedCornersLabel: UILabel {
     override func layoutSubviews() {
         super.layoutSubviews()
-        let radius: CGFloat = self.bounds.size.height / 2.0
+        let radius: CGFloat = self.bounds.size.height / 3.0
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
     }

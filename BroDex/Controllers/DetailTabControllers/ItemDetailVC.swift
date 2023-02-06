@@ -45,7 +45,7 @@ class ItemDetailVC: UIViewController {
             options: [
                 .processor(processor),
                 .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(0.8)),
+                .transition(.fade(0.2)),
                 .cacheOriginalImage
             ])
         {
