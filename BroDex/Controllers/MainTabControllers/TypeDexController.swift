@@ -26,19 +26,49 @@ class TypeDexController: UIViewController {
     @IBOutlet var halfDmgToLabels: [UILabel]!
     @IBOutlet var noDmgToLabels: [UILabel]!
     
+    
+    @IBOutlet weak var doubleDmgFromStackView: UIStackView!
+    @IBOutlet weak var doubleDmgToStackView: UIStackView!
+    
+    @IBOutlet weak var halfDmgFromStackView: UIStackView!
+    @IBOutlet weak var halfDmgToStackView: UIStackView!
+    
+    @IBOutlet weak var halfDmgFromTwoStackView: UIStackView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        firstStackView.layer.cornerRadius = 20
+        SelectBtn.tintColor = UIColor.gray
+        
+        let backgroundView = UIView()
+        let secondbackgroundView = UIView()
+        
+        backgroundView.backgroundColor = .white
+        backgroundView.alpha = 0.1
+        
+        backgroundView.frame = firstStackView.bounds
+        backgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        firstStackView.insertSubview(backgroundView, at: 0)
+        
+        secondbackgroundView.backgroundColor = .white
+        secondbackgroundView.alpha = 0.1
+        
+        secondbackgroundView.frame = secondStackView.bounds
+        secondbackgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        secondStackView.insertSubview(secondbackgroundView, at: 0)
+        
+        firstStackView.layer.cornerRadius = 16
         firstStackView.layer.masksToBounds = true
 
-        firstStackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        firstStackView.layoutMargins = UIEdgeInsets(top: 16, left: 8, bottom: 8, right: 8)
         firstStackView.isLayoutMarginsRelativeArrangement = true
         
-        secondStackView.layer.cornerRadius = 20
+        secondStackView.layer.cornerRadius = 16
         secondStackView.layer.masksToBounds = true
 
-        secondStackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        secondStackView.layoutMargins = UIEdgeInsets(top: 16, left: 8, bottom: 8, right: 8)
         secondStackView.isLayoutMarginsRelativeArrangement = true
         
 
@@ -55,6 +85,7 @@ class TypeDexController: UIViewController {
                     setBgLabel(label: self.doubleDmgFromLabels[i], typeName: self.types!.damage_relations.double_damage_from![i].name)
                     self.doubleDmgFromLabels[i].text = translateTypeName(englishName: self.types!.damage_relations.double_damage_from![i].name)
                     self.doubleDmgFromLabels[i].isHidden = false
+                    hideStackView(arrayCount: self.types!.damage_relations.double_damage_from!.count, stackview: self.doubleDmgFromStackView)
                     
                 }
                 
@@ -62,6 +93,9 @@ class TypeDexController: UIViewController {
                     setBgLabel(label: self.halfDmgFromLabels[i], typeName: self.types!.damage_relations.half_damage_from![i].name)
                     self.halfDmgFromLabels[i].text = translateTypeName(englishName: self.types!.damage_relations.half_damage_from![i].name)
                     self.halfDmgFromLabels[i].isHidden = false
+                    hideTripleStackView(arrayCount: self.types!.damage_relations.half_damage_from!.count, stackview: self.halfDmgFromStackView)
+                    hideStackView(arrayCount: self.types!.damage_relations.half_damage_from!.count, stackview: self.halfDmgFromTwoStackView)
+                    
                     
                 }
                 
@@ -76,6 +110,7 @@ class TypeDexController: UIViewController {
                     setBgLabel(label: self.doubleDmgToLabels[i], typeName: self.types!.damage_relations.double_damage_to![i].name)
                     self.doubleDmgToLabels[i].text = translateTypeName(englishName: self.types!.damage_relations.double_damage_to![i].name)
                     self.doubleDmgToLabels[i].isHidden = false
+                    hideStackView(arrayCount: self.types!.damage_relations.double_damage_to!.count, stackview: self.doubleDmgToStackView)
                     
                 }
                 
@@ -83,6 +118,7 @@ class TypeDexController: UIViewController {
                     setBgLabel(label: self.halfDmgToLabels[i], typeName: self.types!.damage_relations.half_damage_to![i].name)
                     self.halfDmgToLabels[i].text = translateTypeName(englishName: self.types!.damage_relations.half_damage_to![i].name)
                     self.halfDmgToLabels[i].isHidden = false
+                    hideStackView(arrayCount: self.types!.damage_relations.half_damage_to!.count, stackview: self.halfDmgToStackView)
                     
                 }
                 
@@ -114,32 +150,26 @@ extension TypeDexController: ChangeTypeDelegate {
         
         for doubleDmgFromLabels in doubleDmgFromLabels {
             doubleDmgFromLabels.isHidden = true
-            
         }
         
         for halfDmgFromLabels in halfDmgFromLabels {
             halfDmgFromLabels.isHidden = true
-            
         }
         
         for noDmgFromLabels in noDmgFromLabels {
             noDmgFromLabels.isHidden = true
-            
         }
         
         for doubleDmgToLabels in doubleDmgToLabels {
             doubleDmgToLabels.isHidden = true
-            
         }
         
         for halfDmgToLabels in halfDmgToLabels {
             halfDmgToLabels.isHidden = true
-            
         }
         
         for noDmgToLabels in noDmgToLabels {
             noDmgToLabels.isHidden = true
-            
         }
         
         switch type{

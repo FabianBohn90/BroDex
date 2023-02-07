@@ -69,3 +69,16 @@ func setBgLabel(label: UILabel, typeName: String){
         return
     }
 }
+
+
+func hideStackView(arrayCount: Int, stackview: UIStackView){
+    if arrayCount < 5 {
+        stackview.isHidden = true
+    }
+}
+
+func hideTripleStackView(arrayCount: Int, stackview: UIStackView){
+    if arrayCount < 9 {
+        stackview.isHidden = true
+    }
+}

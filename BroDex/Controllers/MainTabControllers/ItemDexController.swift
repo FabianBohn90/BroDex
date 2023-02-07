@@ -170,11 +170,6 @@ extension ItemDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
             }
         }
         
-        
-        
-        
-//        performSegue(withIdentifier: "toItemDetail", sender: itemData)
-        
         return indexPath
     }
     

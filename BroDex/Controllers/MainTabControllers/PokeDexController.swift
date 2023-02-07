@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 
+
 class PokeDexController: UIViewController, UISearchBarDelegate {
     
     let url = "https://pokeapi.co/api/v2/pokemon?limit=1008"
@@ -21,7 +22,19 @@ class PokeDexController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pokeSearchBar: UISearchBar!
     
-    override func viewWillAppear(_ animated: Bool) {
+  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        pokeSearchBar.delegate = self
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+
+        
         fetchData(URL: url) {result in
             
             switch result{
@@ -39,20 +52,6 @@ class PokeDexController: UIViewController, UISearchBarDelegate {
                 break
             }
         }
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        pokeSearchBar.delegate = self
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        view.addGestureRecognizer(tap)
-        tap.cancelsTouchesInView = false
-
     
         
     }
@@ -117,7 +116,9 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
             pokeNameData = (filteredData?[indexPath.row].name)!
         }
         
-        cell.contentView.layer.cornerRadius = 20
+        cell.imgBgView.layer.cornerRadius = 8
+        cell.imgBgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        cell.imgBgView.layer.masksToBounds = true
         
         cell.pokeNameLB.text = pokeNameData
         
@@ -163,8 +164,8 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
                     cell.pokeType1LB.text = translateTypeName(
                         englishName: self.pokeData?.types[0].type.name ?? "error")
                     cell.pokeType2LB.isHidden = false
-//                    cell.pokeType2LB.text = translateTypeName(
-//                        englishName: self.pokeData?.types[1].type.name ?? "error")
+                    cell.pokeType2LB.text = translateTypeName(
+                        englishName: self.pokeData?.types[1].type.name ?? "error")
                 }
                 
                 if self.pokeData?.types.count == 0 {print("Error no types Found")}
@@ -172,24 +173,24 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
                 let pokeType = self.pokeData?.types[0].type.name
                 
                 switch pokeType{
-                case "fire":      cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.816, green: 0.255, blue: 0.153, alpha: 1.0)
-                case "grass":     cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.376, green: 0.694, blue: 0.22, alpha: 1.0)
-                case "water":     cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.125, green: 0.51, blue: 0.898, alpha: 1.0)
-                case "steel":     cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.525, green: 0.522, blue: 0.667, alpha: 1.0)
-                case "bug":       cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.616, green: 0.663, blue: 0.078, alpha: 1.0)
-                case "flying":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.439, green: 0.518, blue: 0.855, alpha: 1.0)
-                case "normal":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.545, green: 0.478, blue: 0.373, alpha: 1.0)
-                case "poison":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.569, green: 0.231, blue: 0.51, alpha: 1.0)
-                case "electric":  cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.867, green: 0.643, blue: 0.047, alpha: 1.0)
-                case "ground":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.694, green: 0.557, blue: 0.157, alpha: 1.0)
-                case "fairy":     cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.839, green: 0.529, blue: 0.839, alpha: 1.0)
-                case "fighting":  cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.498, green: 0.2, blue: 0.11, alpha: 1.0)
-                case "psychic":   cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.812, green: 0.247, blue: 0.447, alpha: 1.0)
-                case "rock":      cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.627, green: 0.525, blue: 0.192, alpha: 1.0)
-                case "ghost":     cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.247, green: 0.247, blue: 0.584, alpha: 1.0)
-                case "ice":       cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.129, green: 0.659, blue: 0.776, alpha: 1.0)
-                case "dragon":    cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.388, green: 0.278, blue: 0.824, alpha: 1.0)
-                case "dark":      cell.contentView.layer.backgroundColor = #colorLiteral(red: 0.325, green: 0.247, blue: 0.204, alpha: 1.0)
+                case "fire":      cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.816, green: 0.255, blue: 0.153, alpha: 1.0)
+                case "grass":     cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.376, green: 0.694, blue: 0.22, alpha: 1.0)
+                case "water":     cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.125, green: 0.51, blue: 0.898, alpha: 1.0)
+                case "steel":     cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.525, green: 0.522, blue: 0.667, alpha: 1.0)
+                case "bug":       cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.616, green: 0.663, blue: 0.078, alpha: 1.0)
+                case "flying":    cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.439, green: 0.518, blue: 0.855, alpha: 1.0)
+                case "normal":    cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.545, green: 0.478, blue: 0.373, alpha: 1.0)
+                case "poison":    cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.569, green: 0.231, blue: 0.51, alpha: 1.0)
+                case "electric":  cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.867, green: 0.643, blue: 0.047, alpha: 1.0)
+                case "ground":    cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.694, green: 0.557, blue: 0.157, alpha: 1.0)
+                case "fairy":     cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.839, green: 0.529, blue: 0.839, alpha: 1.0)
+                case "fighting":  cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.498, green: 0.2, blue: 0.11, alpha: 1.0)
+                case "psychic":   cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.812, green: 0.247, blue: 0.447, alpha: 1.0)
+                case "rock":      cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.627, green: 0.525, blue: 0.192, alpha: 1.0)
+                case "ghost":     cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.247, green: 0.247, blue: 0.584, alpha: 1.0)
+                case "ice":       cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.129, green: 0.659, blue: 0.776, alpha: 1.0)
+                case "dragon":    cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.388, green: 0.278, blue: 0.824, alpha: 1.0)
+                case "dark":      cell.backGroundView.layer.backgroundColor = #colorLiteral(red: 0.325, green: 0.247, blue: 0.204, alpha: 1.0)
                     
                 case .none:
                     cell.contentView.layer.backgroundColor = CGColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.6)
@@ -198,6 +199,20 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
                 }
             }
         }
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            cell.backGroundView.dropShadow(color: .white, opacity: 0.50, offSet: CGSize(width: 1, height: 1), radius: 3, scale: true)
+            cell.imgBgView.layer.borderWidth = 1
+            cell.imgBgView.layer.borderColor = UIColor.white.cgColor
+            
+        } else {
+          cell.backGroundView.dropShadow(color: .black, opacity: 0.50, offSet: CGSize(width: 1, height: 1), radius: 3, scale: true)
+            cell.imgBgView.layer.borderWidth = 1
+            cell.imgBgView.layer.borderColor = UIColor.black.cgColor
+        }
+
+        
+//        cell.backGroundView.dropShadow(color: .white, opacity: 0.50, offSet: CGSize(width: 1, height: 1), radius: 3, scale: true)
         
         return cell
     }

@@ -6,15 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 class EvolveDetailVC: UIViewController {
     
-    var pokeEvolveOne: Pokemon?
-    var pokeEvolveTwo: Pokemon?
-    var pokeEvolveThree: Pokemon?
-    
     var pokemonSpecies: PokemonSpecies?
     var evolutionChain: EvolutionChain?
+    
+    var baseUrl = "https://pokeapi.co/api/v2/pokemon/"
     
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var naviItems: UINavigationItem!
@@ -48,9 +47,6 @@ class EvolveDetailVC: UIViewController {
         naviItems.title = translatePokemonName(englishName: pokemon!.name)
         naviItems.title?.append(" #\( pokeData?.id ?? 0)")
         
-        //        let urlData = pokeData?.sprites.other.propertyWithHyphen.front_default
-        //        self.pokeIV.sd_setImage(with: URL(string: urlData ?? "https://i.ibb.co/W2bWG2Q/missingno.png"), placeholderImage: UIImage(named: "missingno"))
-        
         fetchPokemonSpecies(URL: (pokeData?.species.url)!) {result in
             self.pokemonSpecies = result
             
@@ -58,6 +54,22 @@ class EvolveDetailVC: UIViewController {
                 fetchEvolutionChain(URL: (self.pokemonSpecies?.evolution_chain.url)!) {result in
                     self.evolutionChain = result
                     DispatchQueue.main.async {
+                        
+                        
+                        self.fetchPokemonImage(pokeName: self.evolutionChain?.chain.species.name, imageView: self.evolveOneIV)
+                        
+                        if self.evolutionChain?.chain.evolves_to?.count != 0 {
+                            
+                            self.fetchPokemonImage(pokeName: self.evolutionChain?.chain.evolves_to![0].species.name, imageView: self.evolveTwoIV)
+                            
+                            if self.evolutionChain?.chain.evolves_to![0].evolves_to?.count != 0{
+                                self.fetchPokemonImage(pokeName: self.evolutionChain?.chain.evolves_to![0].evolves_to![0].species.name, imageView: self.evolveThreeIV)
+                                
+                            }
+                            
+                        }
+                        
+                        
                         
                         if self.evolutionChain?.chain.evolves_to?.count != 0 {
                             
@@ -78,6 +90,40 @@ class EvolveDetailVC: UIViewController {
                         
                     }
                 }
+            }
+        }
+    }
+    
+    
+    func fetchPokemonImage(pokeName: String?, imageView: UIImageView ) {
+        var baseUrl = "https://pokeapi.co/api/v2/pokemon/"
+        baseUrl.append(pokeName ?? "1")
+        
+        fetchPokemon(URL: baseUrl) {result in
+            
+            DispatchQueue.main.async {
+                let urlData = URL(string: result.sprites.other.propertyWithHyphen.front_default ?? "https://i.ibb.co/W2bWG2Q/missingno.png")
+                let processor = DownsamplingImageProcessor(size: self.evolveOneIV.bounds.size)
+                
+                imageView.kf.indicatorType = .activity
+                imageView.kf.setImage (
+                    with: urlData,
+//                    placeholder: UIImage(named: "splash screen"),
+                    options: [
+                        .processor(processor),
+                        .scaleFactor(UIScreen.main.scale),
+                        .transition(.fade(0.2)),
+                        .cacheOriginalImage
+                    ]) {
+                        result in
+                        switch result {
+                        case .success(let value):
+                            print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                        case .failure(let error):
+                            print("Job failed: \(error.localizedDescription)")
+                        }
+                    }
+                
             }
         }
     }

@@ -37,6 +37,7 @@ struct effect_entries: Decodable {
 }
 
 struct flavor_text_entries: Decodable {
+    let flavor_text: String?
     let language: language?
     let text: String?
     
