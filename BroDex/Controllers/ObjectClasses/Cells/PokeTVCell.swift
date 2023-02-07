@@ -12,6 +12,7 @@ class PokeTVCell: UITableViewCell {
     
     @IBOutlet weak var backGroundView: UIView!
     
+    @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var imgBgView: UIView!
     
     override func awakeFromNib() {

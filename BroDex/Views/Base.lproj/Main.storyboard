@@ -157,14 +157,23 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJy-sz-F44">
+                                                            <rect key="frame" x="218" y="36" width="59" height="35"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="filled" title="ADD"/>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="sLQ-nQ-lOf" secondAttribute="trailing" constant="16" id="1ac-Qd-ago"/>
+                                                        <constraint firstAttribute="trailing" secondItem="NJy-sz-F44" secondAttribute="trailing" constant="100" id="37I-it-zEc"/>
+                                                        <constraint firstItem="NJy-sz-F44" firstAttribute="leading" secondItem="S4W-9Y-fyu" secondAttribute="trailing" constant="98" id="4Ns-VL-CDX"/>
+                                                        <constraint firstItem="NJy-sz-F44" firstAttribute="top" secondItem="7tY-vS-Nnz" secondAttribute="bottom" constant="7.6699999999999999" id="4uw-PO-Tfo"/>
                                                         <constraint firstAttribute="trailing" secondItem="7tY-vS-Nnz" secondAttribute="trailing" constant="16" id="6JH-nB-OQ9"/>
                                                         <constraint firstAttribute="bottom" secondItem="S4W-9Y-fyu" secondAttribute="bottom" id="BXN-cx-QGm"/>
                                                         <constraint firstItem="myf-xN-xNU" firstAttribute="top" secondItem="NC3-4C-yKM" secondAttribute="top" constant="8" id="CAa-Vj-Gb2"/>
                                                         <constraint firstItem="7tY-vS-Nnz" firstAttribute="top" secondItem="NC3-4C-yKM" secondAttribute="top" constant="8" id="GhT-tQ-85X"/>
+                                                        <constraint firstItem="sLQ-nQ-lOf" firstAttribute="top" secondItem="NJy-sz-F44" secondAttribute="bottom" constant="0.67000000000000004" id="KzX-Zc-CXs"/>
                                                         <constraint firstItem="S4W-9Y-fyu" firstAttribute="leading" secondItem="NC3-4C-yKM" secondAttribute="leading" id="XE5-Ju-fle"/>
                                                         <constraint firstItem="7tY-vS-Nnz" firstAttribute="leading" secondItem="myf-xN-xNU" secondAttribute="trailing" constant="16" id="bBT-sL-aD3"/>
                                                         <constraint firstItem="sLQ-nQ-lOf" firstAttribute="leading" secondItem="myf-xN-xNU" secondAttribute="trailing" constant="16" id="cQm-sb-gLN"/>
@@ -184,6 +193,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addBtn" destination="NJy-sz-F44" id="kgv-fS-FHK"/>
                                             <outlet property="backGroundView" destination="NC3-4C-yKM" id="XVd-Wy-uls"/>
                                             <outlet property="imgBgView" destination="S4W-9Y-fyu" id="EMy-OR-o8J"/>
                                             <outlet property="pokeIV" destination="myf-xN-xNU" id="mXc-Gy-R4X"/>
@@ -1070,6 +1080,7 @@
                         <segue destination="ihB-gc-hCS" kind="relationship" relationship="viewControllers" id="wJR-HZ-AF6"/>
                         <segue destination="GJv-ap-oPP" kind="relationship" relationship="viewControllers" id="4a6-3K-vRA"/>
                         <segue destination="d3n-Oz-brL" kind="relationship" relationship="viewControllers" id="Iji-l1-pGf"/>
+                        <segue destination="Qkw-RS-jmk" kind="relationship" relationship="viewControllers" id="b8U-gU-ljB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SNq-I2-M9T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1561,6 +1572,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UwK-Z7-Cls" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="635.87786259541986" y="1300"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="QEP-Lh-yit">
+            <objects>
+                <tableViewController id="Qkw-RS-jmk" customClass="PokeSaveTVController" customModule="BroDex" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="NTW-Do-LKC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pokeSaveCell" textLabel="Gre-2e-tdP" style="IBUITableViewCellStyleDefault" id="oe6-e2-RDN" customClass="PokeTVCell" customModule="BroDex" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oe6-e2-RDN" id="ugV-Kh-qoL">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gre-2e-tdP">
+                                            <rect key="frame" x="20" y="0.0" width="353" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Qkw-RS-jmk" id="s6P-o2-gmi"/>
+                            <outlet property="delegate" destination="Qkw-RS-jmk" id="VHE-zg-cl7"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="VPQ-kc-o4H"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cNU-8g-IUt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1356" y="1300"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jxZ-bb-Rt0">

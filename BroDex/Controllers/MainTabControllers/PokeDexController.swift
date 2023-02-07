@@ -18,6 +18,8 @@ class PokeDexController: UIViewController, UISearchBarDelegate {
     var filteredData: [Results]?
     var isSearching = false
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pokeSearchBar: UISearchBar!
@@ -107,6 +109,8 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "pokeCell", for: indexPath) as? PokeTVCell else {
             fatalError("Unexpected cell class dequeued")
         }
+        cell.addBtn.tag = indexPath.row
+        cell.addBtn.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
         
         var urlData = (germanData?.results[indexPath.row].url)!
         var pokeNameData = (germanData?.results[indexPath.row].name)!
@@ -215,6 +219,19 @@ extension PokeDexController: UITableViewDataSource, UITableViewDelegate, UIScrol
 //        cell.backGroundView.dropShadow(color: .white, opacity: 0.50, offSet: CGSize(width: 1, height: 1), radius: 3, scale: true)
         
         return cell
+    }
+    
+    @objc func buttonTapped(sender: UIButton) {
+      let buttonRow = sender.tag
+        let newPokemon = PokemonDB(context: self.context)
+        newPokemon.name = (germanData?.results[buttonRow].name)!
+        newPokemon.url = (germanData?.results[buttonRow].url)!
+        
+        do {
+           try self.context.save()
+        } catch {
+            print("Save Failed")
+        }
     }
     
     // MARK: - Navigation
